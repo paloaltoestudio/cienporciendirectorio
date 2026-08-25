@@ -375,7 +375,7 @@
   <div class="footer-inner">
     <div class="footer-left">
       <img src="images/logo.webp" alt="Cien por Cien" class="logo-img invert">
-      <div class="logo-sub" style="color:rgba(255,255,255,.4); margin-top:4px;">Directorio Estratégico de Liderazgos · Medellín 2026</div>
+      
       <div class="footer-note" id="footer-note"></div>
     </div>
     <div class="footer-right">
@@ -408,8 +408,7 @@
 
   // ── FOOTER NOTE ──
   const withPhotoCount = LIDERES.filter(l => l.foto).length;
-  document.getElementById('footer-note').textContent =
-    `* ${withPhotoCount} de ${STATS.total} perfiles ya cuentan con fotografía individual. Los demás muestran un retrato provisional mientras se completa la recolección de imágenes.`;
+  
 
   // ── HERO NETWORK: leader photos connected by shared causas ──
   (function initHeroNetwork() {
