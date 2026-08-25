@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100×100 — Directorio Estratégico de Liderazgos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    :root {
+      --orange:  #FF641F;
+      --orange-d:#c44a10;
+      --coral:   #F79D7B;
+      --peach:   #FFBE2F;
+      --pink:    #FCC3EC;
+      --blue:    #80ACEE;
+      --cream:   #F5F0E8;
+      --cream-2: #EBE5DC;
+      --ink:     #1A1208;
+      --mute:    #6B5D4F;
+      --r-lg: 24px;
+      --r-md: 16px;
+      --r-sm: 10px;
+    }
+
+    body {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,h2,h3,h4 {
+      font-family: 'Parkinsans', system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.0;
+      margin: 0;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV (matches cienporcien.org's header: static, borderless, generous) ── */
+    .nav {
+      position: static; background: transparent;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; gap: 32px;
+      padding: 28px 32px;
+    }
+    .nav-logo { display: flex; flex-direction: column; line-height: 1; }
+    .logo-img { width: 150px; display: block; }
+    .logo-img.invert { filter: brightness(0) invert(1); }
+    .logo-sub { font-size: 10px; font-weight: 600; color: var(--mute); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
+    .nav-links { display: flex; gap: 40px; margin-left: auto; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink); transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange); color: #fff;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      padding: 9px 20px; border-radius: 999px;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--orange-d); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 94vh;
+      background: var(--cream);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 75% 40%, color-mix(in oklab, var(--peach) 30%, transparent) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1440px; margin: 0 auto; padding: 56px 102px; padding-top: 0;
+      display: grid; grid-template-columns: 1.1fr 1.25fr; gap: 0; align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(26,18,8,.65);
+      margin: 0 0 20px; display: flex; align-items: center; gap: 8px;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 28px; height: 2px; background: rgba(26,18,8,.45); display: block;
+    }
+    .hero-h1 { font-size: clamp(52px, 6vw, 80px); color: var(--ink); margin-bottom: 24px; }
+    .hero-h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--orange) 0%, var(--peach) 55%, var(--pink) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-lead {
+      font-size: 18px; line-height: 1.6; color: rgba(26,18,8,.8);
+      margin: 0 0 20px; font-weight: 500;
+    }
+    .hero-quote {
+      font-size: 14px; font-style: italic; color: rgba(26,18,8,.65);
+      border-left: 3px solid rgba(26,18,8,.25); padding-left: 16px;
+      margin: 0 0 36px; line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--ink); color: var(--cream);
+      font-size: 15px; font-weight: 700; padding: 14px 28px;
+      border-radius: 999px; transition: transform .15s, box-shadow .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .btn-secondary {
+      background: var(--cream); color: var(--ink);
+      font-size: 15px; font-weight: 700; padding: 14px 28px;
+      border-radius: 999px; border: 2px solid rgba(26,18,8,.15);
+      transition: background .2s, transform .15s, border-color .2s;
+    }
+    .btn-secondary:hover { background: var(--cream-2); border-color: rgba(26,18,8,.3); transform: translateY(-2px); }
+
+    /* Hero right: network of leader photos, connected by shared causas */
+    .hero-deco {
+      display: flex; align-items: center; justify-content: center;
+      position: relative; width: 100%; height: 660px;
+    }
+    #hero-network-svg { width: 100%; height: 100%; overflow: visible; }
+    .hero-network-node { cursor: pointer; }
+    .hero-network-node circle.ring { transition: stroke-width .15s; }
+    .hero-network-node:hover circle.ring { stroke-width: 4.5; }
+
+    /* ── STATS STRIP ── */
+    .stats {
+      background: var(--ink);
+      padding: 36px 32px;
+    }
+    .stats-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border-left: 1px solid rgba(255,255,255,.1);
+    }
+    .stat {
+      padding: 8px 32px;
+      border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .stat-num {
+      font-family: 'Parkinsans', sans-serif;
+      font-size: 48px; font-weight: 800; letter-spacing: -0.04em;
+      background: linear-gradient(90deg, var(--orange) 0%, var(--peach) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; display: block;
+    }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,.55); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+
+    /* ── SECTION HEADER ── */
+    .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; gap: 32px; }
+    .section-header h2 { font-size: clamp(32px, 3.5vw, 48px); color: var(--ink); }
+    .section-header p { font-size: 15px; color: var(--mute); max-width: 420px; text-align: right; line-height: 1.6; }
+    .tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
+      padding: 4px 10px; border-radius: 999px;
+    }
+
+    /* ── QUICK FIND ── */
+    .quickfind { background: var(--cream-2); padding: 80px 32px; }
+    .quickfind-inner { max-width: 1280px; margin: 0 auto; }
+    .quickfind-title { font-size: clamp(28px, 3vw, 42px); margin-bottom: 12px; }
+    .quickfind-sub { font-size: 16px; color: var(--mute); margin-bottom: 48px; max-width: 540px; }
+    .qf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .qf-card {
+      background: var(--cream); border-radius: var(--r-md);
+      padding: 28px 24px; cursor: pointer; display: block;
+      border: 2px solid transparent;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .qf-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
+    .qf-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+    .qf-label { font-family: 'Parkinsans', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .qf-desc { font-size: 13px; color: var(--mute); line-height: 1.5; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--ink); padding: 80px 32px; }
+    .about-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-h2 { font-size: clamp(32px, 3.5vw, 52px); color: #fff; margin-bottom: 24px; line-height: 1.05; }
+    .about-h2 em { font-style: normal; color: var(--peach); }
+    .about-body { font-size: 16px; color: rgba(255,255,255,.65); line-height: 1.8; }
+    .about-body p + p { margin-top: 16px; }
+    .about-steps { display: flex; flex-direction: column; gap: 24px; }
+    .about-step { display: flex; gap: 20px; align-items: flex-start; }
+    .step-num {
+      font-family: 'Parkinsans', sans-serif; font-size: 32px; font-weight: 800;
+      color: var(--orange); line-height: 1; flex-shrink: 0; width: 48px;
+    }
+    .step-body strong { display: block; font-size: 16px; color: #fff; margin-bottom: 4px; }
+    .step-body span { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+    /* ── HOW TO USE ── */
+    .howto { padding: 80px 32px; }
+    .howto-inner { max-width: 1280px; margin: 0 auto; }
+    .howto-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+    .howto-card { padding: 32px; background: var(--cream-2); border-radius: var(--r-lg); }
+    .howto-for { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .howto-title { font-family: 'Parkinsans', sans-serif; font-size: 22px; margin-bottom: 12px; }
+    .howto-text { font-size: 14px; color: var(--mute); line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.08); padding: 40px 32px; }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-left .logo-100 { font-size: 24px; }
+    .footer-left .logo-sub { color: rgba(255,255,255,.4); }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,.3); }
+    .footer-note { font-size: 11px; color: rgba(255,255,255,.25); margin-top: 6px; font-style: italic; max-width: 460px; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-deco { display: none; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .qf-grid { grid-template-columns: repeat(2,1fr); }
+      .about-inner { grid-template-columns: 1fr; }
+      .howto-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index-v2.html" class="nav-logo">
+      <img src="images/logo.webp" alt="Cien por Cien" class="logo-img">
+      <span class="logo-sub">Directorio de Liderazgos</span>
+    </a>
+    <div class="nav-links">
+      <a href="index-v2.html" class="active">Inicio</a>
+      <a href="directorio.html">Directorio</a>
+      <a href="visualizaciones.html">Visualizaciones</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      
+      <h1 class="hero-h1">Directorio<br>Estratégico de<br><em>Liderazgos</em></h1>
+      <p class="hero-lead" id="hero-lead">Líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.</p>
+      <p class="hero-quote">"Detrás de cada territorio hay personas que están construyendo soluciones. Este directorio existe para encontrarlas."</p>
+      <div class="hero-ctas">
+        <a href="directorio.html" class="btn-primary">Explorar el directorio →</a>
+        <a href="visualizaciones.html" class="btn-secondary">Ver visualizaciones</a>
+      </div>
+    </div>
+    <div class="hero-deco">
+      <svg id="hero-network-svg"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner" id="stats-inner"></div>
+</div>
+
+<!-- QUICK FIND -->
+<section class="quickfind">
+  <div class="quickfind-inner">
+    <h2 class="quickfind-title">Encuentra el líder<br>que necesitas</h2>
+    <p class="quickfind-sub">Navega el directorio por cualquiera de estos cuatro ejes de búsqueda.</p>
+    <div class="qf-grid">
+      <a href="directorio.html?filtro=causa" class="qf-card">
+        <span class="qf-icon">🎯</span>
+        <div class="qf-label">Por causa</div>
+        <div class="qf-desc" id="qf-causa-desc">Salud mental, educación, ambiente, paz y más causas transformadoras.</div>
+      </a>
+      <a href="directorio.html?filtro=territorio" class="qf-card">
+        <span class="qf-icon">📍</span>
+        <div class="qf-label">Por territorio</div>
+        <div class="qf-desc">Comunas, corregimientos y municipios del Valle de Aburrá. Encuentra quién trabaja cerca de ti.</div>
+      </a>
+      <a href="directorio.html?filtro=capacidad" class="qf-card">
+        <span class="qf-icon">⚡</span>
+        <div class="qf-label">Por capacidad</div>
+        <div class="qf-desc">Formación, investigación, mediación, tecnología, economía solidaria y más.</div>
+      </a>
+      <a href="directorio.html?filtro=busca" class="qf-card">
+        <span class="qf-icon">🤝</span>
+        <div class="qf-label">Por qué buscan</div>
+        <div class="qf-desc">Financiación, alianzas, mentoría, visibilidad. Conecta donde hay necesidad real.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <div>
+      <h2 class="about-h2">¿Para qué<br>sirve este<br><em>directorio</em>?</h2>
+      <div class="about-body">
+        <p>Conectar a empresas, fundaciones, gobiernos, universidades y organismos de cooperación con líderes sociales que están generando transformaciones reales en sus territorios.</p>
+        <p>Cada perfil es una puerta de entrada a una capacidad instalada, a una red de confianza construida durante años, a un conocimiento del territorio que ningún consultorio externo puede replicar.</p>
+      </div>
+    </div>
+    <div class="about-steps">
+      <div class="about-step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>Explora el directorio</strong>
+          <span>Filtra por causa, territorio, capacidad o lo que el líder necesita. Cada perfil tiene información completa y datos de contacto.</span>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>Lee el perfil completo</strong>
+          <span>Entiende qué hace, qué problema resuelve, con quién trabaja y qué ofrece a posibles aliados.</span>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <strong>Activa la conexión</strong>
+          <span>Contacta directamente o usa las visualizaciones para identificar nodos estratégicos del ecosistema.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section class="howto">
+  <div class="howto-inner">
+    <div class="section-header">
+      <h2>¿Cómo usar<br>este directorio?</h2>
+    </div>
+    <div class="howto-grid">
+      <div class="howto-card">
+        <div class="howto-for">Para empresas y fundaciones</div>
+        <div class="howto-title">Inversión social con impacto real</div>
+        <div class="howto-text">Identifica líderes con necesidades de financiación, equipamiento o alianzas estratégicas. Encuentra el territorio donde quieres invertir y conecta con quien ya está construyendo.</div>
+      </div>
+      <div class="howto-card">
+        <div class="howto-for">Para gobierno y cooperación</div>
+        <div class="howto-title">Capacidades instaladas en el territorio</div>
+        <div class="howto-text">Mapea las fortalezas del ecosistema antes de diseñar políticas o programas. Los líderes que ofrecen formación, mediación o movilización son aliados estratégicos, no beneficiarios.</div>
+      </div>
+      <div class="howto-card">
+        <div class="howto-for">Para universidades e investigadores</div>
+        <div class="howto-title">Laboratorios vivos de transformación</div>
+        <div class="howto-text">Cada líder es una investigación en curso. Los que ofrecen investigación y articulación territorial son socios naturales para proyectos de co-creación y conocimiento situado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="images/logo.webp" alt="Cien por Cien" class="logo-img invert">
+      <div class="logo-sub" style="color:rgba(255,255,255,.4); margin-top:4px;">Directorio Estratégico de Liderazgos · Medellín 2026</div>
+      <div class="footer-note" id="footer-note"></div>
+    </div>
+    <div class="footer-right">
+      <div>Una iniciativa de <strong style="color:rgba(255,255,255,.7)">Cien por Cien</strong></div>
+      <div style="margin-top:8px"></div>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script>
+  document.getElementById('hero-lead').textContent =
+    `${STATS.total} líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.`;
+  document.getElementById('qf-causa-desc').textContent =
+    `${TODAS_CAUSAS.slice(0,4).join(', ')} y ${Math.max(TODAS_CAUSAS.length - 4, 0)} causas más.`;
+
+  // ── STATS STRIP ──
+  const statsData = [
+    [STATS.total, 'Líderes registrados'],
+    [STATS.territorios, 'Territorios representados'],
+    [STATS.causas, 'Causas transformadoras'],
+    [STATS.disponibles, 'Disponibles para alianzas'],
+  ];
+  document.getElementById('stats-inner').innerHTML = statsData.map(([num, label]) => `
+    <div class="stat">
+      <span class="stat-num">${num}</span>
+      <span class="stat-label">${label}</span>
+    </div>`).join('');
+
+  // ── FOOTER NOTE ──
+  const withPhotoCount = LIDERES.filter(l => l.foto).length;
+  document.getElementById('footer-note').textContent =
+    `* ${withPhotoCount} de ${STATS.total} perfiles ya cuentan con fotografía individual. Los demás muestran un retrato provisional mientras se completa la recolección de imágenes.`;
+
+  // ── HERO NETWORK: leader photos connected by shared causas ──
+  (function initHeroNetwork() {
+    const svgEl = document.getElementById('hero-network-svg');
+    const wrap = svgEl.parentElement;
+    const W = wrap.clientWidth || 520;
+    const H = wrap.clientHeight || 520;
+    if (!W || !H) return;
+
+    const picked = LIDERES; // all leaders — this is a decorative piece, not a filtered view
+
+    const nodes = picked.map(l => ({
+      id: l.id, nombre: l.nombre, foto: l.foto, causa: l.causas[0],
+      r: 16 + (l.id.length % 4) * 3
+    }));
+
+    const links = [];
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const shared = picked[i].causas.find(c => picked[j].causas.includes(c));
+        if (shared) links.push({ source: nodes[i].id, target: nodes[j].id, causa: shared });
+      }
+    }
+    const MAX_LINKS = 100;
+    const cappedLinks = links.length > MAX_LINKS ? d3.shuffle(links.slice()).slice(0, MAX_LINKS) : links;
+
+    // Guarantee every node has at least one link, so isolated causas (no
+    // overlap with the rest of the sample) don't drift away from the cluster.
+    const linked = new Set();
+    cappedLinks.forEach(l => { linked.add(l.source); linked.add(l.target); });
+    nodes.forEach((d, i) => {
+      if (linked.has(d.id)) return;
+      const neighbor = nodes[(i + 1) % nodes.length];
+      cappedLinks.push({ source: d.id, target: neighbor.id, causa: d.causa });
+      linked.add(d.id);
+    });
+
+    const sim = d3.forceSimulation(nodes)
+      .force('link', d3.forceLink(cappedLinks).id(d => d.id).distance(50).strength(0.5))
+      .force('charge', d3.forceManyBody().strength(-30))
+      .force('center', d3.forceCenter(W / 2, H / 2))
+      .force('x', d3.forceX(W / 2).strength(0.03))
+      .force('y', d3.forceY(H / 2).strength(0.03))
+      .force('collision', d3.forceCollide(d => d.r + 4))
+      .stop();
+    for (let i = 0; i < 400; i++) sim.tick();
+    nodes.forEach(d => {
+      d.x = Math.max(d.r + 4, Math.min(W - d.r - 4, d.x));
+      d.y = Math.max(d.r + 4, Math.min(H - d.r - 4, d.y));
+    });
+
+    const svg = d3.select(svgEl).attr('viewBox', `0 0 ${W} ${H}`);
+    const defs = svg.append('defs');
+    const g = svg.append('g');
+
+    g.selectAll('line').data(cappedLinks).join('line')
+      .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x).attr('y2', d => d.target.y)
+      .attr('stroke', d => CAUSAS_COLORES[d.causa] || '#D8CFC2')
+      .attr('stroke-opacity', 0.45).attr('stroke-width', 1.4);
+
+    const nodeG = g.selectAll('a.hero-network-node').data(nodes).join('a')
+      .attr('class', 'hero-network-node')
+      .attr('href', d => `perfil.html?id=${d.id}`);
+
+    nodeG.each(function (d, i) {
+      if (!d.foto) return;
+      defs.append('clipPath').attr('id', `hero-clip-${i}`)
+        .append('circle').attr('cx', d.x).attr('cy', d.y).attr('r', d.r);
+    });
+
+    // Leaders with a real photo
+    nodeG.filter(d => d.foto).append('image')
+      .attr('href', d => d.foto)
+      .attr('x', d => d.x - d.r).attr('y', d => d.y - d.r)
+      .attr('width', d => d.r * 2).attr('height', d => d.r * 2)
+      .attr('preserveAspectRatio', 'xMidYMid slice')
+      .attr('clip-path', (d, i) => `url(#hero-clip-${i})`);
+
+    // Leaders without a photo yet: solid causa-colored circle + initials
+    const noPhoto = nodeG.filter(d => !d.foto);
+    noPhoto.append('circle')
+      .attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => d.r)
+      .attr('fill', d => CAUSAS_COLORES[d.causa] || '#D8CFC2');
+    noPhoto.append('text')
+      .attr('x', d => d.x).attr('y', d => d.y)
+      .attr('text-anchor', 'middle').attr('dominant-baseline', 'central')
+      .attr('font-family', 'Parkinsans, sans-serif').attr('font-weight', 800)
+      .attr('font-size', d => Math.max(9, d.r * 0.7))
+      .attr('fill', d => CAUSAS_TEXTO_OSCURO[d.causa] ? '#1A1208' : '#fff')
+      .text(d => initials(d.nombre));
+
+    nodeG.append('circle')
+      .attr('class', 'ring')
+      .attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => d.r)
+      .attr('fill', 'none').attr('stroke', '#F5F0E8').attr('stroke-width', 2.5);
+
+    nodeG.append('title').text(d => d.nombre);
+  })();
+</script>
+
+
+
+</body>
+</html>

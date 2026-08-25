@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100×100 — Directorio Estratégico de Liderazgos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    :root {
+      --orange:  #FF641F;
+      --orange-d:#c44a10;
+      --coral:   #F79D7B;
+      --peach:   #FFBE2F;
+      --pink:    #FCC3EC;
+      --blue:    #80ACEE;
+      --cream:   #F5F0E8;
+      --cream-2: #EBE5DC;
+      --ink:     #1A1208;
+      --mute:    #6B5D4F;
+      --r-lg: 24px;
+      --r-md: 16px;
+      --r-sm: 10px;
+    }
+
+    body {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,h2,h3,h4 {
+      font-family: 'Parkinsans', system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.0;
+      margin: 0;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: color-mix(in oklab, var(--cream) 88%, transparent);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid color-mix(in oklab, var(--ink) 8%, transparent);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; gap: 32px;
+      padding: 14px 32px;
+    }
+    .nav-logo { display: flex; flex-direction: column; line-height: 1; }
+    .logo-img { width: 150px; display: block; }
+    .logo-img.invert { filter: brightness(0) invert(1); }
+    .logo-sub { font-size: 10px; font-weight: 600; color: var(--mute); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
+    .nav-links { display: flex; gap: 28px; margin-left: auto; }
+    .nav-links a { font-size: 14px; font-weight: 600; color: var(--mute); transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-cta {
+      background: var(--orange); color: #fff;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+      padding: 9px 20px; border-radius: 999px;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--orange-d); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 90vh;
+      background: linear-gradient(135deg, #FF641F 0%, #FFBE2F 48%, #FCC3EC 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(255,255,255,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1280px; margin: 0 auto; padding: 80px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(26,18,8,.65);
+      margin: 0 0 20px; display: flex; align-items: center; gap: 8px;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 28px; height: 2px; background: rgba(26,18,8,.45); display: block;
+    }
+    .hero-h1 { font-size: clamp(52px, 6vw, 84px); color: var(--ink); margin-bottom: 24px; }
+    .hero-h1 em { font-style: normal; color: rgba(255,255,255,.9); }
+    .hero-lead {
+      font-size: 18px; line-height: 1.6; color: rgba(26,18,8,.8);
+      margin: 0 0 20px; font-weight: 500;
+    }
+    .hero-quote {
+      font-size: 14px; font-style: italic; color: rgba(26,18,8,.65);
+      border-left: 3px solid rgba(26,18,8,.25); padding-left: 16px;
+      margin: 0 0 36px; line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--ink); color: var(--cream);
+      font-size: 15px; font-weight: 700; padding: 14px 28px;
+      border-radius: 999px; transition: transform .15s, box-shadow .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .btn-secondary {
+      background: rgba(255,255,255,.5); color: var(--ink);
+      font-size: 15px; font-weight: 700; padding: 14px 28px;
+      border-radius: 999px; border: 2px solid rgba(26,18,8,.2);
+      transition: background .2s, transform .15s;
+      backdrop-filter: blur(8px);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.7); transform: translateY(-2px); }
+
+    /* Hero right: big numero decoration */
+    .hero-deco {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero-deco-num {
+      font-family: 'Parkinsans', sans-serif;
+      font-size: clamp(160px, 18vw, 260px);
+      font-weight: 800; letter-spacing: -0.06em;
+      color: rgba(255,255,255,.25);
+      line-height: 1; user-select: none;
+    }
+    .hero-deco-label {
+      position: absolute; bottom: 20px; right: 0;
+      text-align: right;
+    }
+    .hero-deco-label strong {
+      display: block; font-family: 'Parkinsans', sans-serif;
+      font-size: 20px; color: rgba(26,18,8,.7);
+    }
+    .hero-deco-label span { font-size: 12px; color: rgba(26,18,8,.5); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* ── STATS STRIP ── */
+    .stats {
+      background: var(--ink);
+      padding: 36px 32px;
+    }
+    .stats-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border-left: 1px solid rgba(255,255,255,.1);
+    }
+    .stat {
+      padding: 8px 32px;
+      border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .stat-num {
+      font-family: 'Parkinsans', sans-serif;
+      font-size: 48px; font-weight: 800; letter-spacing: -0.04em;
+      background: linear-gradient(90deg, var(--orange) 0%, var(--peach) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; display: block;
+    }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,.55); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+
+    /* ── SECTION HEADER ── */
+    .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; gap: 32px; }
+    .section-header h2 { font-size: clamp(32px, 3.5vw, 48px); color: var(--ink); }
+    .section-header p { font-size: 15px; color: var(--mute); max-width: 420px; text-align: right; line-height: 1.6; }
+    .tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
+      padding: 4px 10px; border-radius: 999px;
+    }
+
+    /* ── QUICK FIND ── */
+    .quickfind { background: var(--cream-2); padding: 80px 32px; }
+    .quickfind-inner { max-width: 1280px; margin: 0 auto; }
+    .quickfind-title { font-size: clamp(28px, 3vw, 42px); margin-bottom: 12px; }
+    .quickfind-sub { font-size: 16px; color: var(--mute); margin-bottom: 48px; max-width: 540px; }
+    .qf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .qf-card {
+      background: var(--cream); border-radius: var(--r-md);
+      padding: 28px 24px; cursor: pointer; display: block;
+      border: 2px solid transparent;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .qf-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
+    .qf-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+    .qf-label { font-family: 'Parkinsans', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .qf-desc { font-size: 13px; color: var(--mute); line-height: 1.5; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--ink); padding: 80px 32px; }
+    .about-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-h2 { font-size: clamp(32px, 3.5vw, 52px); color: #fff; margin-bottom: 24px; line-height: 1.05; }
+    .about-h2 em { font-style: normal; color: var(--peach); }
+    .about-body { font-size: 16px; color: rgba(255,255,255,.65); line-height: 1.8; }
+    .about-body p + p { margin-top: 16px; }
+    .about-steps { display: flex; flex-direction: column; gap: 24px; }
+    .about-step { display: flex; gap: 20px; align-items: flex-start; }
+    .step-num {
+      font-family: 'Parkinsans', sans-serif; font-size: 32px; font-weight: 800;
+      color: var(--orange); line-height: 1; flex-shrink: 0; width: 48px;
+    }
+    .step-body strong { display: block; font-size: 16px; color: #fff; margin-bottom: 4px; }
+    .step-body span { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+    /* ── HOW TO USE ── */
+    .howto { padding: 80px 32px; }
+    .howto-inner { max-width: 1280px; margin: 0 auto; }
+    .howto-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+    .howto-card { padding: 32px; background: var(--cream-2); border-radius: var(--r-lg); }
+    .howto-for { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .howto-title { font-family: 'Parkinsans', sans-serif; font-size: 22px; margin-bottom: 12px; }
+    .howto-text { font-size: 14px; color: var(--mute); line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.08); padding: 40px 32px; }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-left .logo-100 { font-size: 24px; }
+    .footer-left .logo-sub { color: rgba(255,255,255,.4); }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,.3); }
+    .footer-note { font-size: 11px; color: rgba(255,255,255,.25); margin-top: 6px; font-style: italic; max-width: 460px; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-deco { display: none; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .qf-grid { grid-template-columns: repeat(2,1fr); }
+      .about-inner { grid-template-columns: 1fr; }
+      .howto-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.webp" alt="Cien por Cien" class="logo-img">
+      <span class="logo-sub">Directorio de Liderazgos</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="directorio.html">Directorio</a>
+      <a href="visualizaciones.html">Visualizaciones</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Cien por Cien · Medellín 2026</p>
+      <h1 class="hero-h1">Directorio<br>Estratégico de<br><em>Liderazgos</em></h1>
+      <p class="hero-lead" id="hero-lead">Líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.</p>
+      <p class="hero-quote">"Detrás de cada territorio hay personas que están construyendo soluciones. Este directorio existe para encontrarlas."</p>
+      <div class="hero-ctas">
+        <a href="directorio.html" class="btn-primary">Explorar el directorio →</a>
+        <a href="visualizaciones.html" class="btn-secondary">Ver visualizaciones</a>
+      </div>
+    </div>
+    <div class="hero-deco">
+      <span class="hero-deco-num" id="hero-deco-num">100</span>
+      <div class="hero-deco-label">
+        <strong>líderes</strong>
+        <span>en el territorio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner" id="stats-inner"></div>
+</div>
+
+<!-- QUICK FIND -->
+<section class="quickfind">
+  <div class="quickfind-inner">
+    <h2 class="quickfind-title">Encuentra el líder<br>que necesitas</h2>
+    <p class="quickfind-sub">Navega el directorio por cualquiera de estos cuatro ejes de búsqueda.</p>
+    <div class="qf-grid">
+      <a href="directorio.html?filtro=causa" class="qf-card">
+        <span class="qf-icon">🎯</span>
+        <div class="qf-label">Por causa</div>
+        <div class="qf-desc" id="qf-causa-desc">Salud mental, educación, ambiente, paz y más causas transformadoras.</div>
+      </a>
+      <a href="directorio.html?filtro=territorio" class="qf-card">
+        <span class="qf-icon">📍</span>
+        <div class="qf-label">Por territorio</div>
+        <div class="qf-desc">Comunas, corregimientos y municipios del Valle de Aburrá. Encuentra quién trabaja cerca de ti.</div>
+      </a>
+      <a href="directorio.html?filtro=capacidad" class="qf-card">
+        <span class="qf-icon">⚡</span>
+        <div class="qf-label">Por capacidad</div>
+        <div class="qf-desc">Formación, investigación, mediación, tecnología, economía solidaria y más.</div>
+      </a>
+      <a href="directorio.html?filtro=busca" class="qf-card">
+        <span class="qf-icon">🤝</span>
+        <div class="qf-label">Por qué buscan</div>
+        <div class="qf-desc">Financiación, alianzas, mentoría, visibilidad. Conecta donde hay necesidad real.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <div>
+      <h2 class="about-h2">¿Para qué<br>sirve este<br><em>directorio</em>?</h2>
+      <div class="about-body">
+        <p>Conectar a empresas, fundaciones, gobiernos, universidades y organismos de cooperación con líderes sociales que están generando transformaciones reales en sus territorios.</p>
+        <p>Cada perfil es una puerta de entrada a una capacidad instalada, a una red de confianza construida durante años, a un conocimiento del territorio que ningún consultorio externo puede replicar.</p>
+      </div>
+    </div>
+    <div class="about-steps">
+      <div class="about-step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <strong>Explora el directorio</strong>
+          <span>Filtra por causa, territorio, capacidad o lo que el líder necesita. Cada perfil tiene información completa y datos de contacto.</span>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <strong>Lee el perfil completo</strong>
+          <span>Entiende qué hace, qué problema resuelve, con quién trabaja y qué ofrece a posibles aliados.</span>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <strong>Activa la conexión</strong>
+          <span>Contacta directamente o usa las visualizaciones para identificar nodos estratégicos del ecosistema.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section class="howto">
+  <div class="howto-inner">
+    <div class="section-header">
+      <h2>¿Cómo usar<br>este directorio?</h2>
+    </div>
+    <div class="howto-grid">
+      <div class="howto-card">
+        <div class="howto-for">Para empresas y fundaciones</div>
+        <div class="howto-title">Inversión social con impacto real</div>
+        <div class="howto-text">Identifica líderes con necesidades de financiación, equipamiento o alianzas estratégicas. Encuentra el territorio donde quieres invertir y conecta con quien ya está construyendo.</div>
+      </div>
+      <div class="howto-card">
+        <div class="howto-for">Para gobierno y cooperación</div>
+        <div class="howto-title">Capacidades instaladas en el territorio</div>
+        <div class="howto-text">Mapea las fortalezas del ecosistema antes de diseñar políticas o programas. Los líderes que ofrecen formación, mediación o movilización son aliados estratégicos, no beneficiarios.</div>
+      </div>
+      <div class="howto-card">
+        <div class="howto-for">Para universidades e investigadores</div>
+        <div class="howto-title">Laboratorios vivos de transformación</div>
+        <div class="howto-text">Cada líder es una investigación en curso. Los que ofrecen investigación y articulación territorial son socios naturales para proyectos de co-creación y conocimiento situado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="images/logo.webp" alt="Cien por Cien" class="logo-img invert">
+      <div class="logo-sub" style="color:rgba(255,255,255,.4); margin-top:4px;">Directorio Estratégico de Liderazgos · Medellín 2026</div>
+      <div class="footer-note" id="footer-note"></div>
+    </div>
+    <div class="footer-right">
+      <div>Una iniciativa de <strong style="color:rgba(255,255,255,.7)">Cien por Cien</strong></div>
+      <div style="margin-top:8px"></div>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script>
+  document.getElementById('hero-lead').textContent =
+    `${STATS.total} líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.`;
+  document.getElementById('hero-deco-num').textContent = STATS.total;
+  document.getElementById('qf-causa-desc').textContent =
+    `${TODAS_CAUSAS.slice(0,4).join(', ')} y ${Math.max(TODAS_CAUSAS.length - 4, 0)} causas más.`;
+
+  // ── STATS STRIP ──
+  const statsData = [
+    [STATS.total, 'Líderes registrados'],
+    [STATS.territorios, 'Territorios representados'],
+    [STATS.causas, 'Causas transformadoras'],
+    [STATS.disponibles, 'Disponibles para alianzas'],
+  ];
+  document.getElementById('stats-inner').innerHTML = statsData.map(([num, label]) => `
+    <div class="stat">
+      <span class="stat-num">${num}</span>
+      <span class="stat-label">${label}</span>
+    </div>`).join('');
+
+  // ── FOOTER NOTE ──
+  const withPhotoCount = LIDERES.filter(l => l.foto).length;
+  document.getElementById('footer-note').textContent =
+    `* ${withPhotoCount} de ${STATS.total} perfiles ya cuentan con fotografía individual. Los demás muestran un retrato provisional mientras se completa la recolección de imágenes.`;
+</script>
+
+<a href="index-v2.html" style="position:fixed;bottom:20px;right:20px;z-index:200;background:var(--ink);color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25);">Ver v2 →</a>
+
+</body>
+</html>

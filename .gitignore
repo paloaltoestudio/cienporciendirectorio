@@ -1,0 +1,6 @@
+# OS / editor cruft
+.DS_Store
+*.swp
+
+# Local dev server logs
+*.log

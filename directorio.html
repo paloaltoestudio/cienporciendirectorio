@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directorio de Líderes — 100×100</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    :root {
+      --orange:  #FF641F;
+      --orange-d:#c44a10;
+      --coral:   #F79D7B;
+      --peach:   #FFBE2F;
+      --pink:    #FCC3EC;
+      --cream:   #F5F0E8;
+      --cream-2: #EBE5DC;
+      --ink:     #1A1208;
+      --mute:    #6B5D4F;
+      --r-lg: 24px;
+      --r-md: 16px;
+    }
+    body {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      color: var(--ink); background: var(--cream);
+      font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3,h4 { font-family: 'Parkinsans', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.025em; line-height: 1.0; margin: 0; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 100; background: color-mix(in oklab, var(--cream) 88%, transparent); backdrop-filter: blur(16px); border-bottom: 1px solid color-mix(in oklab, var(--ink) 8%, transparent); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 32px; padding: 14px 32px; }
+    .nav-logo { display: flex; flex-direction: column; line-height: 1; }
+    .logo-img { width: 150px; display: block; }
+    .logo-img.invert { filter: brightness(0) invert(1); }
+    .logo-sub { font-size: 10px; font-weight: 600; color: var(--mute); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
+    .nav-links { display: flex; gap: 28px; margin-left: auto; }
+    .nav-links a { font-size: 14px; font-weight: 600; color: var(--mute); transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-cta { background: var(--orange); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; padding: 9px 20px; border-radius: 999px; transition: background .2s, transform .15s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--orange-d); transform: translateY(-1px); }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: linear-gradient(135deg, #FF641F 0%, #FFBE2F 60%, #FCC3EC 100%);
+      padding: 64px 32px 48px;
+    }
+    .page-header-inner { max-width: 1280px; margin: 0 auto; }
+    .page-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,18,8,.6); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .page-eyebrow::before { content: ''; width: 24px; height: 2px; background: rgba(26,18,8,.4); display: block; }
+    .page-h1 { font-size: clamp(40px, 5vw, 72px); color: var(--ink); margin-bottom: 12px; }
+    .page-h1 em { font-style: normal; color: rgba(255,255,255,.85); }
+    .page-sub { font-size: 16px; color: rgba(26,18,8,.65); font-weight: 500; margin: 0; }
+
+    /* FILTERS */
+    .filters-wrap {
+      position: sticky; top: 57px; z-index: 90;
+      background: color-mix(in oklab, var(--cream) 94%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid color-mix(in oklab, var(--ink) 8%, transparent);
+      padding: 16px 32px;
+    }
+    .filters-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .search-wrap { position: relative; flex: 1 1 220px; min-width: 200px; max-width: 320px; }
+    .search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--mute); pointer-events: none; }
+    .search-input {
+      width: 100%; padding: 10px 14px 10px 36px;
+      border: 2px solid var(--cream-2); border-radius: 999px;
+      background: var(--cream); color: var(--ink);
+      font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500;
+      outline: none; transition: border-color .2s;
+    }
+    .search-input:focus { border-color: var(--orange); }
+    .filter-select {
+      flex: 0 1 168px; width: 168px; min-width: 0;
+      padding: 10px 16px; border: 2px solid var(--cream-2);
+      border-radius: 999px; background: var(--cream); color: var(--ink);
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+      outline: none; cursor: pointer; transition: border-color .2s;
+      appearance: none;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B5D4F' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+      padding-right: 34px;
+    }
+    .filter-select:focus { border-color: var(--orange); }
+    .filter-select.has-value { border-color: var(--orange); background-color: color-mix(in oklab, var(--orange) 8%, var(--cream)); }
+    .filter-reset {
+      flex: 0 0 auto;
+      padding: 10px 16px; background: var(--ink); color: #fff;
+      border: none; border-radius: 999px; font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s;
+      display: none;
+    }
+    .filter-reset:hover { background: #2a2018; }
+    .filter-reset.visible { display: block; }
+    .filters-count { flex: 0 0 auto; font-size: 13px; color: var(--mute); font-weight: 600; margin-left: auto; white-space: nowrap; }
+
+    /* CAUSE PILLS (horizontal scroll) */
+    .cause-pills-wrap {
+      padding: 12px 32px 0;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .cause-pills-wrap::-webkit-scrollbar { display: none; }
+    .cause-pills-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 8px; padding-bottom: 12px; }
+    .cause-pill {
+      padding: 6px 14px; border-radius: 999px;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      border: 2px solid transparent; white-space: nowrap;
+      transition: transform .15s, box-shadow .15s, opacity .15s;
+      background: var(--cream-2); color: var(--mute);
+    }
+    .cause-pill:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .cause-pill.active { border-color: var(--ink); }
+
+    /* GRID */
+    .grid-section { padding: 32px 32px 80px; }
+    .grid-inner { max-width: 1280px; margin: 0 auto; }
+    .leaders-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .leader-card {
+      background: var(--cream-2); border-radius: var(--r-lg);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 28px 20px 20px;
+      transition: transform .25s, box-shadow .25s;
+      position: relative;
+    }
+    .leader-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,.12); }
+
+    .card-avatar-wrap { position: relative; width: 108px; height: 108px; margin-bottom: 16px; flex-shrink: 0; }
+    .card-avatar {
+      width: 100%; height: 100%; border-radius: 50%;
+      background-size: cover; background-position: center top;
+      border: 3px solid var(--cream); box-shadow: 0 6px 16px rgba(26,18,8,.14);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-initials { font-family: 'Parkinsans', sans-serif; font-weight: 800; color: rgba(255,255,255,.9); font-size: 34px; }
+
+    .card-name { font-family: 'Parkinsans', sans-serif; font-size: 17px; margin-bottom: 4px; }
+    .card-org { font-size: 12px; color: var(--mute); margin-bottom: 4px; font-weight: 500; }
+    .card-territory {
+      font-size: 12px; color: var(--mute); margin-bottom: 12px;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+      max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .card-territory::before { content: '📍'; font-size: 11px; flex-shrink: 0; }
+    .card-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; flex: 1; align-content: flex-start; }
+    .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.02em; padding: 4px 10px; border-radius: 999px; }
+    .card-cta {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding-top: 14px; margin-top: auto; border-top: 1px solid color-mix(in oklab, var(--ink) 8%, transparent);
+      font-size: 13px; font-weight: 700; color: var(--orange);
+      transition: gap .15s;
+    }
+    .card-exp { font-size: 11px; color: var(--mute); font-weight: 600; }
+    .leader-card:hover .card-cta { color: var(--orange-d); }
+
+    /* EMPTY STATE */
+    .empty-state { text-align: center; padding: 80px 32px; display: none; }
+    .empty-state h3 { font-size: 28px; margin-bottom: 12px; }
+    .empty-state p { color: var(--mute); font-size: 15px; }
+    .empty-state .btn-reset { background: var(--orange); color: #fff; font-size: 14px; font-weight: 700; padding: 12px 24px; border-radius: 999px; border: none; cursor: pointer; margin-top: 20px; font-family: 'Montserrat', sans-serif; }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 32px; border-top: 1px solid rgba(255,255,255,.08); }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,.3); }
+    .footer-note { font-size: 11px; color: rgba(255,255,255,.2); margin-top: 6px; font-style: italic; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .filters-inner { flex-wrap: wrap; }
+      .search-wrap { max-width: 100%; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.webp" alt="Cien por Cien" class="logo-img">
+      <span class="logo-sub">Directorio de Liderazgos</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="directorio.html" class="active">Directorio</a>
+      <a href="visualizaciones.html">Visualizaciones</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="page-eyebrow" id="page-eyebrow">Perfiles · Medellín 2026</p>
+    <h1 class="page-h1">El <em>Directorio</em></h1>
+    <p class="page-sub" id="page-sub">Usa los filtros para encontrar exactamente lo que necesitas.</p>
+  </div>
+</div>
+
+<!-- CAUSE PILLS -->
+<div class="cause-pills-wrap" id="cause-pills-wrap">
+  <div class="cause-pills-inner" id="cause-pills">
+    <button class="cause-pill active" data-causa="">Todos</button>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters-wrap">
+  <div class="filters-inner">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Nombre, organización, territorio…">
+    </div>
+    <select class="filter-select" id="filter-territorio">
+      <option value="">Territorio</option>
+    </select>
+    <select class="filter-select" id="filter-busca">
+      <option value="">¿Qué buscan?</option>
+    </select>
+    <select class="filter-select" id="filter-ofrece">
+      <option value="">¿Qué ofrecen?</option>
+    </select>
+    <select class="filter-select" id="filter-alianza">
+      <option value="">Disponibilidad</option>
+      <option value="si">Disponibles para alianzas</option>
+    </select>
+    <button class="filter-reset" id="filter-reset">✕ Limpiar filtros</button>
+    <span class="filters-count" id="filters-count"></span>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="grid-section">
+  <div class="grid-inner">
+    <div class="leaders-grid" id="leaders-grid"></div>
+    <div class="empty-state" id="empty-state">
+      <h3>Sin resultados</h3>
+      <p>No hay líderes que coincidan con tu búsqueda.<br>Prueba con otros filtros.</p>
+      <button class="btn-reset" onclick="resetFilters()">Limpiar filtros</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="images/logo.webp" alt="Cien por Cien" class="logo-img invert">
+      <div class="footer-note">* Los territorios y causas provienen directamente de las respuestas de cada líder al formulario del directorio.</div>
+    </div>
+    <div class="footer-right">Una iniciativa de Cien por Cien</div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script>
+  document.getElementById('page-eyebrow').textContent = `${STATS.total} perfiles · Medellín 2026`;
+  document.getElementById('page-sub').textContent =
+    `${STATS.total} líderes, ${STATS.territorios} territorios, ${STATS.causas} causas principales. Usa los filtros para encontrar exactamente lo que necesitas.`;
+
+  // ── INIT FILTERS ──
+  const territorios = [...new Set(LIDERES.map(l => l.territorio))].sort((a,b) => a.localeCompare(b, 'es'));
+  const selT = document.getElementById('filter-territorio');
+  territorios.forEach(t => {
+    const o = document.createElement('option');
+    o.value = t;
+    o.textContent = t.length > 38 ? t.slice(0, 35).trim() + '…' : t;
+    if (t.length > 38) o.title = t;
+    selT.appendChild(o);
+  });
+
+  const selB = document.getElementById('filter-busca');
+  BUSCA_OPCIONES.forEach(b => { const o = document.createElement('option'); o.value = b; o.textContent = b; selB.appendChild(o); });
+
+  const selO = document.getElementById('filter-ofrece');
+  OFRECE_OPCIONES.forEach(b => { const o = document.createElement('option'); o.value = b; o.textContent = b; selO.appendChild(o); });
+
+  // ── CAUSE PILLS ──
+  const pillsContainer = document.getElementById('cause-pills');
+  TODAS_CAUSAS.forEach(causa => {
+    const btn = document.createElement('button');
+    btn.className = 'cause-pill';
+    btn.dataset.causa = causa;
+    btn.textContent = causa;
+    btn.style.background = CAUSAS_COLORES[causa];
+    btn.style.color = CAUSAS_TEXTO_OSCURO[causa] ? '#1A1208' : '#fff';
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cause-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      renderGrid();
+    });
+    pillsContainer.appendChild(btn);
+  });
+  document.querySelector('.cause-pill[data-causa=""]').addEventListener('click', () => {
+    document.querySelectorAll('.cause-pill').forEach(p => p.classList.remove('active'));
+    document.querySelector('.cause-pill[data-causa=""]').classList.add('active');
+    renderGrid();
+  });
+
+  // ── RENDER ──
+  function getFilters() {
+    return {
+      search: document.getElementById('search-input').value.toLowerCase().trim(),
+      causa: document.querySelector('.cause-pill.active')?.dataset.causa || '',
+      territorio: document.getElementById('filter-territorio').value,
+      busca: document.getElementById('filter-busca').value,
+      ofrece: document.getElementById('filter-ofrece').value,
+      alianza: document.getElementById('filter-alianza').value
+    };
+  }
+
+  function applyFilters(f, l) {
+    if (f.search) {
+      const hay = `${l.nombre} ${l.organizacion} ${l.territorio}`.toLowerCase();
+      if (!hay.includes(f.search)) return false;
+    }
+    if (f.causa && !l.causas.includes(f.causa)) return false;
+    if (f.territorio && l.territorio !== f.territorio) return false;
+    if (f.busca && !l.busca.includes(f.busca)) return false;
+    if (f.ofrece && !l.ofrece.includes(f.ofrece)) return false;
+    if (f.alianza === 'si' && !l.disponible_alianzas) return false;
+    return true;
+  }
+
+  function renderGrid() {
+    const f = getFilters();
+    const filtered = LIDERES.filter(l => applyFilters(f, l));
+    const grid = document.getElementById('leaders-grid');
+    const empty = document.getElementById('empty-state');
+    const count = document.getElementById('filters-count');
+
+    const hasFilter = f.search || f.causa || f.territorio || f.busca || f.ofrece || f.alianza;
+    document.getElementById('filter-reset').classList.toggle('visible', !!hasFilter);
+
+    ['filter-territorio','filter-busca','filter-ofrece','filter-alianza'].forEach(id => {
+      document.getElementById(id).classList.toggle('has-value', !!document.getElementById(id).value);
+    });
+
+    count.textContent = `${filtered.length} líder${filtered.length !== 1 ? 'es' : ''}`;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = ''; empty.style.display = 'block'; return;
+    }
+    empty.style.display = 'none';
+
+    grid.innerHTML = filtered.map(l => {
+      const causas = l.causas.slice(0, 3).map(c => tagHTML(c)).join('');
+      return `
+        <a href="perfil.html?id=${l.id}" class="leader-card">
+          <div class="card-avatar-wrap">
+            <div class="card-avatar" style="${photoStyleAttr(l)}">
+              ${l.foto ? '' : `<span class="card-initials">${initials(l.nombre)}</span>`}
+            </div>
+          </div>
+          <div class="card-name">${l.nombre}</div>
+          <div class="card-org">${l.organizacion}</div>
+          <div class="card-territory">${l.territorio}</div>
+          <div class="card-tags">${causas}</div>
+          <div class="card-cta">
+            <span class="card-exp">${l.experiencia} años liderando</span>
+            <span>Ver perfil →</span>
+          </div>
+        </a>`;
+    }).join('');
+  }
+
+  function resetFilters() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('filter-territorio').value = '';
+    document.getElementById('filter-busca').value = '';
+    document.getElementById('filter-ofrece').value = '';
+    document.getElementById('filter-alianza').value = '';
+    document.querySelectorAll('.cause-pill').forEach(p => p.classList.remove('active'));
+    document.querySelector('.cause-pill[data-causa=""]').classList.add('active');
+    renderGrid();
+  }
+
+  // ── EVENTS ──
+  document.getElementById('search-input').addEventListener('input', renderGrid);
+  document.getElementById('filter-territorio').addEventListener('change', renderGrid);
+  document.getElementById('filter-busca').addEventListener('change', renderGrid);
+  document.getElementById('filter-ofrece').addEventListener('change', renderGrid);
+  document.getElementById('filter-alianza').addEventListener('change', renderGrid);
+  document.getElementById('filter-reset').addEventListener('click', resetFilters);
+
+  // ── URL PARAMS ──
+  const params = new URLSearchParams(window.location.search);
+  const initFiltro = params.get('filtro');
+  if (initFiltro === 'causa') {
+    document.getElementById('cause-pills-wrap').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  renderGrid();
+</script>
+
+</body>
+</html>

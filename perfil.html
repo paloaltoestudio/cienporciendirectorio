@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil — 100×100 Directorio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --orange:  #FF641F; --orange-d:#c44a10;
+      --coral:   #F79D7B; --peach:   #FFBE2F;
+      --pink:    #FCC3EC; --cream:   #F5F0E8;
+      --cream-2: #EBE5DC; --ink:     #1A1208; --mute: #6B5D4F;
+      --r-lg: 24px; --r-md: 16px;
+    }
+    body { font-family: 'Montserrat', system-ui, sans-serif; color: var(--ink); background: var(--cream); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    h1,h2,h3,h4 { font-family: 'Parkinsans', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.025em; line-height: 1.0; margin: 0; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 100; background: color-mix(in oklab, var(--cream) 88%, transparent); backdrop-filter: blur(16px); border-bottom: 1px solid color-mix(in oklab, var(--ink) 8%, transparent); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 32px; padding: 14px 32px; }
+    .nav-logo { display: flex; flex-direction: column; line-height: 1; }
+    .logo-img { width: 150px; display: block; }
+    .logo-img.invert { filter: brightness(0) invert(1); }
+    .logo-sub { font-size: 10px; font-weight: 600; color: var(--mute); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
+    .nav-links { display: flex; gap: 28px; margin-left: auto; }
+    .nav-links a { font-size: 14px; font-weight: 600; color: var(--mute); transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-cta { background: var(--orange); color: #fff; font-size: 13px; font-weight: 700; padding: 9px 20px; border-radius: 999px; transition: background .2s, transform .15s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--orange-d); transform: translateY(-1px); }
+
+    /* BACK LINK */
+    .back-bar { padding: 16px 32px; max-width: 1280px; margin: 0 auto; }
+    .back-link { font-size: 13px; font-weight: 700; color: var(--mute); display: inline-flex; align-items: center; gap: 6px; transition: color .2s; }
+    .back-link:hover { color: var(--orange); }
+
+    /* HERO */
+    .profile-hero {
+      padding: 0 32px 0;
+      max-width: 1280px; margin: 0 auto;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 420px 1fr;
+      gap: 48px; align-items: stretch;
+    }
+    .hero-photo-wrap {
+      border-radius: var(--r-lg); overflow: hidden;
+      height: 560px; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      background-size: cover; background-position: center top;
+    }
+    .hero-initials { font-family: 'Parkinsans', sans-serif; font-weight: 800; color: rgba(255,255,255,.85); font-size: 96px; }
+    .photo-num {
+      position: absolute; top: 20px; left: 20px;
+      font-family: 'Parkinsans', sans-serif; font-size: 13px; font-weight: 800;
+      letter-spacing: 0.1em; color: rgba(255,255,255,.9);
+      background: rgba(0,0,0,.3); backdrop-filter: blur(6px);
+      padding: 6px 12px; border-radius: 8px;
+    }
+    .hero-info {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 8px 0;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--mute);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    }
+    .hero-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--mute); display: block; }
+    .hero-name { font-size: clamp(38px, 4vw, 60px); color: var(--ink); margin-bottom: 8px; }
+    .hero-org { font-size: 18px; color: var(--mute); margin-bottom: 4px; font-weight: 500; }
+    .hero-territory {
+      font-size: 15px; color: var(--mute); font-weight: 600;
+      display: flex; align-items: center; gap: 6px; margin-bottom: 28px;
+    }
+    .hero-causes { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+    .tag { font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 999px; letter-spacing: 0.02em; }
+    .hero-meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 36px; }
+    .meta-item { background: var(--cream-2); border-radius: var(--r-md); padding: 16px 20px; }
+    .meta-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); margin-bottom: 6px; }
+    .meta-value { font-family: 'Parkinsans', sans-serif; font-size: 24px; font-weight: 700; color: var(--ink); }
+    .meta-value.sm { font-size: 15px; font-weight: 600; font-family: 'Montserrat', sans-serif; color: var(--ink); }
+    .alianza-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #d4f0e0; color: #1a4a30;
+      font-size: 13px; font-weight: 700; padding: 8px 16px;
+      border-radius: 999px; margin-bottom: 28px;
+      width: fit-content;
+    }
+    .alianza-badge.no { background: var(--cream-2); color: var(--mute); }
+    .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-primary { background: var(--orange); color: #fff; font-size: 14px; font-weight: 700; padding: 12px 24px; border-radius: 999px; transition: background .2s, transform .15s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--orange-d); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--ink); font-size: 14px; font-weight: 700; padding: 12px 24px; border-radius: 999px; border: 2px solid color-mix(in oklab, var(--ink) 20%, transparent); transition: border-color .2s, transform .15s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-outline:hover { border-color: var(--orange); transform: translateY(-2px); }
+
+    /* VISION QUOTE */
+    .vision { background: var(--ink); padding: 64px 32px; margin-top: 48px; }
+    .vision-inner { max-width: 1280px; margin: 0 auto; }
+    .vision-quote {
+      font-family: 'Parkinsans', sans-serif;
+      font-size: clamp(26px, 3vw, 44px); font-weight: 700;
+      color: #fff; line-height: 1.2; text-align: center;
+      max-width: 900px; margin: 0 auto;
+    }
+    .vision-quote::before { content: '"'; color: var(--orange); }
+    .vision-quote::after { content: '"'; color: var(--orange); }
+    .vision-name { text-align: center; margin-top: 28px; font-size: 14px; color: rgba(255,255,255,.5); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* CONTENT */
+    .content { padding: 64px 32px; max-width: 1280px; margin: 0 auto; }
+    .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .content-block {
+      background: var(--cream-2); border-radius: var(--r-lg); padding: 32px;
+    }
+    .content-block.full { grid-column: 1 / -1; }
+    .block-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .block-label::after { content: ''; flex: 1; height: 1px; background: color-mix(in oklab, var(--orange) 25%, transparent); }
+    .block-title { font-size: 20px; margin-bottom: 12px; }
+    .block-text { font-size: 15px; color: var(--mute); line-height: 1.75; }
+
+    /* NEEDS CARDS */
+    .needs-grid { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .need-pill {
+      padding: 8px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 700;
+      border: 2px solid color-mix(in oklab, var(--orange) 30%, transparent);
+      color: var(--orange);
+    }
+
+    /* OFFER LIST */
+    .offer-list { list-style: none; padding: 0; margin: 8px 0 0; }
+    .offer-list li { padding: 10px 0; border-bottom: 1px solid color-mix(in oklab, var(--ink) 8%, transparent); font-size: 14px; color: var(--mute); display: flex; align-items: center; gap: 10px; }
+    .offer-list li:last-child { border-bottom: none; }
+    .offer-list li::before { content: '→'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+
+    /* POPULATIONS */
+    .pop-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .pop-tag { padding: 6px 12px; background: var(--cream); border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--mute); }
+
+    /* CONTACT */
+    .contact-section { padding: 0 32px 64px; max-width: 1280px; margin: 0 auto; scroll-margin-top: 80px; }
+    .contact-card { background: linear-gradient(135deg, var(--orange) 0%, var(--peach) 100%); border-radius: var(--r-lg); padding: 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .contact-left h3 { font-size: 28px; color: var(--ink); margin-bottom: 8px; }
+    .contact-left p { font-size: 15px; color: rgba(26,18,8,.7); }
+    .contact-details { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+    .contact-item { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--ink); background: rgba(255,255,255,.5); padding: 8px 16px; border-radius: 999px; }
+    .contact-item.link { transition: background .2s; }
+    .contact-item.link:hover { background: rgba(255,255,255,.75); }
+
+    /* RELATED */
+    .related { padding: 0 32px 64px; max-width: 1280px; margin: 0 auto; }
+    .related h3 { font-size: 28px; margin-bottom: 32px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .rel-card {
+      background: var(--cream-2); border-radius: var(--r-md); display: flex;
+      flex-direction: column; align-items: center; text-align: center;
+      padding: 24px 16px 20px; transition: transform .2s, box-shadow .2s;
+    }
+    .rel-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.1); }
+    .rel-avatar {
+      width: 76px; height: 76px; border-radius: 50%; margin-bottom: 14px; flex-shrink: 0;
+      background-size: cover; background-position: center top;
+      border: 3px solid var(--cream); box-shadow: 0 4px 12px rgba(26,18,8,.12);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .rel-initials { font-family: 'Parkinsans', sans-serif; font-weight: 800; color: rgba(255,255,255,.9); font-size: 24px; }
+    .rel-name { font-family: 'Parkinsans', sans-serif; font-size: 16px; margin-bottom: 4px; }
+    .rel-org { font-size: 12px; color: var(--mute); }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 32px; border-top: 1px solid rgba(255,255,255,.08); }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,.3); }
+    .footer-note { font-size: 11px; color: rgba(255,255,255,.2); margin-top: 6px; font-style: italic; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-photo-wrap { height: 360px; }
+      .content-grid { grid-template-columns: 1fr; }
+      .content-block.full { grid-column: 1; }
+      .related-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .contact-card { flex-direction: column; }
+      .hero-meta { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.webp" alt="Cien por Cien" class="logo-img">
+      <span class="logo-sub">Directorio de Liderazgos</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="directorio.html" class="active">Directorio</a>
+      <a href="visualizaciones.html">Visualizaciones</a>
+    </div>
+  </div>
+</nav>
+
+<div class="back-bar">
+  <a href="directorio.html" class="back-link">← Volver al directorio</a>
+</div>
+
+<!-- PROFILE HERO -->
+<div class="profile-hero" id="profile-hero">
+  <div class="hero-grid">
+    <div class="hero-photo-wrap" id="hero-photo-wrap">
+      <div class="hero-photo" id="hero-photo"></div>
+      
+    </div>
+    <div class="hero-info" id="hero-info">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- VISION QUOTE -->
+<div class="vision">
+  <div class="vision-inner">
+    <div class="vision-quote" id="vision-quote"></div>
+    <div class="vision-name" id="vision-name"></div>
+  </div>
+</div>
+
+<!-- CONTENT BLOCKS -->
+<div class="content">
+  <div class="content-grid" id="content-grid">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact-section">
+  <!-- Populated by JS -->
+</div>
+
+<!-- RELATED -->
+<div class="related" id="related-section">
+  <!-- Populated by JS -->
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="images/logo.webp" alt="Cien por Cien" class="logo-img invert">
+      
+    </div>
+    <div class="footer-right">Una iniciativa de Cien por Cien</div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const idParam = params.get('id');
+  const lider = LIDERES.find(l => l.id === idParam) || LIDERES.find(l => l.numero === idParam) || LIDERES[0];
+
+  document.title = `${lider.nombre} — 100×100 Directorio`;
+
+  // ── HERO PHOTO ──
+  const photoWrap = document.getElementById('hero-photo-wrap');
+  document.getElementById('hero-photo').style.cssText = photoStyleAttr(lider);
+  if (!lider.foto) {
+    document.getElementById('hero-photo').innerHTML = `<span class="hero-initials">${initials(lider.nombre)}</span>`;
+    document.getElementById('hero-photo').style.display = 'flex';
+    document.getElementById('hero-photo').style.alignItems = 'center';
+    document.getElementById('hero-photo').style.justifyContent = 'center';
+  }
+  // document.getElementById('photo-num').textContent = lider.numero;
+
+  // ── HERO INFO ──
+  const causasTags = lider.causas.map(c => tagHTML(c)).join('');
+
+  const alianzaBadge = lider.disponible_alianzas
+    ? `<div class="alianza-badge">✓ Disponible para alianzas</div>`
+    : `<div class="alianza-badge no">✗ No disponible para nuevas alianzas</div>`;
+
+  document.getElementById('hero-info').innerHTML = `
+    <p class="hero-eyebrow">${lider.territorio}</p>
+    <h1 class="hero-name">${lider.nombre}</h1>
+    <div class="hero-org">${lider.organizacion}</div>
+    <div class="hero-territory">📍 ${lider.territorio}</div>
+    <div class="hero-causes">${causasTags}</div>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="meta-label">Experiencia</div>
+        <div class="meta-value">${lider.experiencia}<small style="font-size:14px;font-weight:600;font-family:Montserrat,sans-serif"> años</small></div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Territorio</div>
+        <div class="meta-value sm">${lider.territorio}</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Causas</div>
+        <div class="meta-value sm">${lider.causas.join(', ')}</div>
+      </div>
+    </div>
+    ${alianzaBadge}
+    <div class="hero-ctas">
+      <a href="#contact-section" class="btn-primary">Conectar →</a>
+      <a href="directorio.html" class="btn-outline">← Ver directorio</a>
+    </div>
+  `;
+
+  // ── VISION ──
+  document.getElementById('vision-quote').textContent = lider.frase_vision;
+  document.getElementById('vision-name').textContent = `— ${lider.nombre}`;
+
+  // ── CONTENT BLOCKS ──
+  const ofertaList = lider.ofrece.map(o => `<li>${o}</li>`).join('');
+  const necesidadesPills = lider.busca.map(b => `<span class="need-pill">${b}</span>`).join('');
+  const pobTags = lider.poblacion.map(p => `<span class="pop-tag">${p}</span>`).join('');
+  const capacidadesTags = lider.capacidades.map(p => `<span class="pop-tag">${p}</span>`).join('');
+
+  let blocks = `
+    <div class="content-block">
+      <div class="block-label">¿Qué hace?</div>
+      <div class="block-text">${lider.que_hace || '—'}</div>
+    </div>
+    <div class="content-block">
+      <div class="block-label">¿Qué problema ayuda a resolver?</div>
+      <div class="block-text">${lider.problema || '—'}</div>
+    </div>
+    <div class="content-block">
+      <div class="block-label">¿Con quién trabaja?</div>
+      <div class="block-text" style="margin-bottom:16px">${lider.con_quien || '—'}</div>
+      <div class="pop-tags">${pobTags}</div>
+    </div>
+    <div class="content-block">
+      <div class="block-label">¿Qué ofrece a aliados?</div>
+      <div class="block-text" style="margin-bottom:16px">${lider.que_ofrece_largo || '—'}</div>
+      <ul class="offer-list">${ofertaList}</ul>
+    </div>
+    <div class="content-block">
+      <div class="block-label">¿Qué necesita?</div>
+      <div class="block-text" style="margin-bottom:16px">Para escalar su trabajo y llegar a más personas y territorios.</div>
+      <div class="needs-grid">${necesidadesPills}</div>
+    </div>
+    <div class="content-block">
+      <div class="block-label">Capacidades</div>
+      <div class="block-text" style="margin-bottom:16px">Conocimientos y competencias que puede poner al servicio de aliados.</div>
+      <div class="pop-tags">${capacidadesTags}</div>
+    </div>`;
+
+  if (lider.alianzas_activas) {
+    blocks += `
+    <div class="content-block full">
+      <div class="block-label">Alianzas activas</div>
+      <div class="block-text">${lider.alianzas_activas}</div>
+    </div>`;
+  }
+
+  if (lider.proyecto_autogestion) {
+    blocks += `
+    <div class="content-block full">
+      <div class="block-label">Proyecto que le gustaría autogestionar con la red 100×100</div>
+      <div class="block-text">${lider.proyecto_autogestion}</div>
+    </div>`;
+  }
+
+  document.getElementById('content-grid').innerHTML = blocks;
+
+  // ── CONTACT ──
+  const contactItems = [];
+  if (lider.contacto.email) contactItems.push(`<a href="mailto:${lider.contacto.email}" class="contact-item link">✉ ${lider.contacto.email}</a>`);
+  if (lider.contacto.telefono) contactItems.push(`<span class="contact-item">📞 ${lider.contacto.telefono}</span>`);
+  if (lider.contacto.instagram) contactItems.push(`<span class="contact-item">📸 ${lider.contacto.instagram}</span>`);
+  if (lider.contacto.web) contactItems.push(`<a href="${/^https?:\/\//.test(lider.contacto.web) ? lider.contacto.web : 'https://' + lider.contacto.web}" target="_blank" rel="noopener" class="contact-item link">🌐 ${lider.contacto.web}</a>`);
+
+  document.getElementById('contact-section').innerHTML = `
+    <div class="contact-card">
+      <div class="contact-left">
+        <h3>Conectar con ${lider.nombre.split(' ')[0]}</h3>
+        <p>Escríbele directamente o síguele en redes para conocer más de su trabajo.</p>
+      </div>
+      <div class="contact-details">${contactItems.join('')}</div>
+    </div>
+  `;
+
+  // ── RELATED ──
+  const related = LIDERES.filter(l =>
+    l.id !== lider.id &&
+    l.causas.some(c => lider.causas.includes(c))
+  ).slice(0, 3);
+
+  if (related.length > 0) {
+    const relCards = related.map(r => {
+      const t = r.causas.slice(0, 2).map(c => tagHTML(c, 'font-size:10px;padding:3px 8px')).join('');
+      return `
+        <a href="perfil.html?id=${r.id}" class="rel-card">
+          <div class="rel-avatar" style="${photoStyleAttr(r)}">
+            ${r.foto ? '' : `<span class="rel-initials">${initials(r.nombre)}</span>`}
+          </div>
+          <div class="rel-name">${r.nombre}</div>
+          <div class="rel-org" style="margin-bottom:8px">${r.territorio}</div>
+          <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center">${t}</div>
+        </a>`;
+    }).join('');
+    document.getElementById('related-section').innerHTML = `
+      <h3>Líderes relacionados</h3>
+      <div class="related-grid">${relCards}</div>
+    `;
+  }
+</script>
+
+</body>
+</html>

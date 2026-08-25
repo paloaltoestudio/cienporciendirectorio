@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizaciones — 100×100 Directorio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    :root {
+      --orange:  #FF641F; --orange-d:#c44a10;
+      --coral:   #F79D7B; --peach:   #FFBE2F;
+      --pink:    #FCC3EC; --cream:   #F5F0E8;
+      --cream-2: #EBE5DC; --ink:     #1A1208; --mute: #6B5D4F;
+      --r-lg: 24px; --r-md: 16px;
+    }
+    body { font-family: 'Montserrat', system-ui, sans-serif; color: var(--ink); background: var(--cream); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    h1,h2,h3,h4 { font-family: 'Parkinsans', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.025em; line-height: 1.0; margin: 0; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 100; background: color-mix(in oklab, var(--cream) 88%, transparent); backdrop-filter: blur(16px); border-bottom: 1px solid color-mix(in oklab, var(--ink) 8%, transparent); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 32px; padding: 14px 32px; }
+    .nav-logo { display: flex; flex-direction: column; line-height: 1; }
+    .logo-img { width: 150px; display: block; }
+    .logo-img.invert { filter: brightness(0) invert(1); }
+    .logo-sub { font-size: 10px; font-weight: 600; color: var(--mute); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
+    .nav-links { display: flex; gap: 28px; margin-left: auto; }
+    .nav-links a { font-size: 14px; font-weight: 600; color: var(--mute); transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-cta { background: var(--orange); color: #fff; font-size: 13px; font-weight: 700; padding: 9px 20px; border-radius: 999px; transition: background .2s, transform .15s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--orange-d); transform: translateY(-1px); }
+
+    /* PAGE HEADER */
+    .page-header { background: var(--ink); padding: 64px 32px 48px; }
+    .page-header-inner { max-width: 1280px; margin: 0 auto; }
+    .page-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .page-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--orange); display: block; }
+    .page-h1 { font-size: clamp(40px, 5vw, 72px); color: #fff; margin-bottom: 12px; }
+    .page-h1 em { font-style: normal; color: var(--peach); }
+    .page-sub { font-size: 16px; color: rgba(255,255,255,.5); font-weight: 500; margin: 0; }
+
+    /* TABS */
+    .tabs-wrap { background: var(--ink); border-bottom: 1px solid rgba(255,255,255,.1); position: sticky; top: 57px; z-index: 90; }
+    .tabs-inner { max-width: 1280px; margin: 0 auto; display: flex; padding: 0 32px; gap: 4px; }
+    .tab-btn {
+      padding: 16px 24px; font-family: 'Montserrat', sans-serif;
+      font-size: 14px; font-weight: 700; color: rgba(255,255,255,.4);
+      background: none; border: none; cursor: pointer;
+      border-bottom: 3px solid transparent; transition: color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: rgba(255,255,255,.7); }
+    .tab-btn.active { color: #fff; border-bottom-color: var(--orange); }
+
+    /* PANELS */
+    .panel { display: none; padding: 64px 32px; }
+    .panel.active { display: block; }
+    .panel-inner { max-width: 1280px; margin: 0 auto; }
+    .panel-header { margin-bottom: 48px; }
+    .panel-header h2 { font-size: clamp(28px, 3vw, 44px); margin-bottom: 12px; }
+    .panel-header p { font-size: 15px; color: var(--mute); max-width: 600px; line-height: 1.7; }
+
+    /* ── TAB 1: CAPACIDADES ── */
+    .cap-layout { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
+    .chart-wrap { background: var(--cream-2); border-radius: var(--r-lg); padding: 32px; }
+    .chart-wrap canvas { width: 100% !important; }
+    .cap-sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .cap-insight { background: var(--cream-2); border-radius: var(--r-md); padding: 24px; }
+    .cap-insight-num {
+      font-family: 'Parkinsans', sans-serif; font-size: 48px; font-weight: 800;
+      background: linear-gradient(90deg, var(--orange), var(--peach));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1;
+    }
+    .cap-insight-label { font-size: 13px; color: var(--mute); font-weight: 600; margin-top: 4px; }
+    .cap-insight-note { font-size: 13px; color: var(--mute); line-height: 1.6; margin-top: 8px; }
+    .cap-cta { background: var(--ink); color: #fff; border-radius: var(--r-md); padding: 24px; }
+    .cap-cta h4 { font-size: 18px; color: #fff; margin-bottom: 8px; }
+    .cap-cta p { font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 16px; line-height: 1.6; }
+    .cap-cta a { background: var(--orange); color: #fff; font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 999px; display: inline-block; }
+
+    /* ── TAB 2: RED ── */
+    .red-layout { display: grid; grid-template-columns: 1fr 320px; gap: 24px; align-items: start; }
+    #network-svg { width: 100%; height: 600px; background: var(--cream-2); border-radius: var(--r-lg); }
+    .network-legend { background: var(--cream-2); border-radius: var(--r-lg); padding: 24px; }
+    .network-legend h4 { font-family: 'Parkinsans', sans-serif; font-size: 18px; margin-bottom: 16px; }
+    .net-legend-section { margin-bottom: 20px; }
+    .net-legend-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); margin-bottom: 10px; }
+    .net-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--mute); margin-bottom: 8px; }
+    .net-circle { border-radius: 50%; flex-shrink: 0; }
+    .net-note { background: var(--ink); border-radius: var(--r-md); padding: 16px; margin-top: 16px; }
+    .net-note p { font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.6; margin: 0; }
+    /* Tooltip */
+    .d3-tooltip {
+      position: fixed; background: var(--ink); color: #fff;
+      padding: 10px 14px; border-radius: 10px; font-size: 12px; font-weight: 600;
+      pointer-events: none; z-index: 999; opacity: 0; transition: opacity .15s;
+      max-width: 200px; line-height: 1.5;
+    }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 32px; border-top: 1px solid rgba(255,255,255,.08); }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-right { font-size: 12px; color: rgba(255,255,255,.3); }
+
+    @media (max-width: 900px) {
+      .cap-layout, .red-layout { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.webp" alt="Cien por Cien" class="logo-img">
+      <span class="logo-sub">Directorio de Liderazgos</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="directorio.html">Directorio</a>
+      <a href="visualizaciones.html" class="active">Visualizaciones</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="page-eyebrow" id="page-eyebrow">Datos del ecosistema</p>
+    <h1 class="page-h1">El <em>Ecosistema</em><br>en datos</h1>
+    <p class="page-sub">Dos formas de ver el mismo territorio: las capacidades que hay y cómo se conectan entre sí a través de las causas que lideran.</p>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs-inner">
+    <button class="tab-btn active" data-tab="capacidades">Mapa de Capacidades</button>
+    <button class="tab-btn" data-tab="red">Red cien por cien</button>
+  </div>
+</div>
+
+<!-- ── PANEL 1: CAPACIDADES ── -->
+<div class="panel active" id="panel-capacidades">
+  <div class="panel-inner">
+    <div class="panel-header">
+      <h2>Mapa de Capacidades</h2>
+      <p id="cap-desc">¿Qué sabe hacer esta comunidad de líderes? Las capacidades más frecuentes revelan las fortalezas del ecosistema y los activos disponibles para aliados.</p>
+    </div>
+    <div class="cap-layout">
+      <div class="chart-wrap">
+        <canvas id="capacidades-chart"></canvas>
+      </div>
+      <div class="cap-sidebar" id="cap-sidebar">
+        <!-- Populated by JS -->
+        <div class="cap-cta">
+          <h4>¿Buscas una capacidad?</h4>
+          <p>Filtra el directorio por la capacidad que necesitas para tu alianza o proyecto.</p>
+          <a href="directorio.html">Ir al directorio →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PANEL 2: RED ── -->
+<div class="panel" id="panel-red">
+  <div class="panel-inner">
+    <div class="panel-header">
+      <h2>Red cien por cien</h2>
+      <p>Visualización del ecosistema: los nodos grandes son causas, los pequeños son líderes. Las conexiones muestran quién trabaja en qué causa. Arrastra los nodos para explorar.</p>
+    </div>
+    <div class="red-layout">
+      <svg id="network-svg"></svg>
+      <div class="network-legend">
+        <h4>Leyenda</h4>
+        <div class="net-legend-section">
+          <div class="net-legend-title">Nodos causa</div>
+          <div id="net-cause-items"></div>
+        </div>
+        <div class="net-legend-section">
+          <div class="net-legend-title">Nodos líder</div>
+          <div class="net-item">
+            <div class="net-circle" style="width:10px;height:10px;background:#EBE5DC;border:2px solid #6B5D4F"></div>
+            <span>Líder individual</span>
+          </div>
+        </div>
+        <div class="net-note">
+          <p>Los nodos de causa más grandes indican mayor concentración de líderes en esa área. Los líderes con múltiples causas aparecen conectados a varios nodos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="images/logo.webp" alt="Cien por Cien" class="logo-img invert">
+    </div>
+    <div class="footer-right">Una iniciativa de Cien por Cien · Medellín 2026</div>
+  </div>
+</footer>
+
+<div class="d3-tooltip" id="tooltip"></div>
+
+<script src="data.js"></script>
+<script>
+document.getElementById('page-eyebrow').textContent = `Datos del ecosistema · ${STATS.total} líderes`;
+document.getElementById('cap-desc').textContent =
+  `¿Qué sabe hacer esta comunidad de ${STATS.total} líderes? Las capacidades más frecuentes revelan las fortalezas del ecosistema y los activos disponibles para aliados.`;
+
+// ══════════════════════════════════════
+// TABS
+// ══════════════════════════════════════
+let networkInitialized = false;
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel = document.getElementById('panel-' + btn.dataset.tab);
+    panel.classList.add('active');
+    if (btn.dataset.tab === 'red' && !networkInitialized) { initNetwork(); networkInitialized = true; }
+  });
+});
+
+// ══════════════════════════════════════
+// TAB 1: CAPACIDADES CHART
+// ══════════════════════════════════════
+const chartColors = [
+  '#FF641F','#FFBE2F','#F79D7B','#FCC3EC','#80ACEE',
+  '#7DC89A','#B4A6E0','#F5C542','#E8885A','#6DC8C4'
+];
+
+const ctx = document.getElementById('capacidades-chart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: CAPACIDADES_DATA.labels,
+    datasets: [{
+      data: CAPACIDADES_DATA.values,
+      backgroundColor: chartColors,
+      borderRadius: 8,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.parsed.x} líderes`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(26,18,8,.06)' },
+        ticks: { font: { family: 'Montserrat', weight: '600', size: 12 }, color: '#6B5D4F' },
+        max: Math.max(...CAPACIDADES_DATA.values) + 5
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { family: 'Montserrat', weight: '700', size: 13 }, color: '#1A1208' }
+      }
+    }
+  }
+});
+
+// Dynamic sidebar insights (top / bottom capacidad)
+const capTop = { label: CAPACIDADES_DATA.labels[0], value: CAPACIDADES_DATA.values[0] };
+const lastIdx = CAPACIDADES_DATA.labels.length - 1;
+const capBottom = { label: CAPACIDADES_DATA.labels[lastIdx], value: CAPACIDADES_DATA.values[lastIdx] };
+
+document.getElementById('cap-sidebar').innerHTML = `
+  <div class="cap-insight">
+    <div class="cap-insight-num">${capTop.value}</div>
+    <div class="cap-insight-label">líderes con capacidad de ${capTop.label}</div>
+    <div class="cap-insight-note">Es la capacidad más distribuida del ecosistema: ${capTop.value} de ${STATS.total} líderes pueden aportarla, lo que la convierte en un activo colectivo de alto alcance.</div>
+  </div>
+  <div class="cap-insight">
+    <div class="cap-insight-num">${capBottom.value}</div>
+    <div class="cap-insight-label">líderes con capacidad de ${capBottom.label}</div>
+    <div class="cap-insight-note">Es la capacidad menos frecuente entre las diez principales. Hay una oportunidad de fortalecerla para ampliar el alcance del ecosistema.</div>
+  </div>
+` + document.getElementById('cap-sidebar').innerHTML;
+
+// ══════════════════════════════════════
+// TAB 2: D3 NETWORK
+// ══════════════════════════════════════
+function initNetwork() {
+  const svgEl = document.getElementById('network-svg');
+  const W = svgEl.clientWidth || 800;
+  const H = 600;
+
+  const svg = d3.select('#network-svg')
+    .attr('width', W)
+    .attr('height', H);
+
+  const g = svg.append('g');
+  svg.call(d3.zoom().scaleExtent([0.4, 2.5]).on('zoom', e => g.attr('transform', e.transform)));
+
+  const causeNodes = TODAS_CAUSAS.map(c => ({
+    id: 'cause-' + c,
+    label: c,
+    type: 'cause',
+    color: CAUSAS_COLORES[c],
+    size: 30 + LIDERES.filter(l => l.causas.includes(c)).length * 3
+  }));
+
+  const leaderNodes = LIDERES.map(l => ({
+    id: 'leader-' + l.id,
+    label: l.nombre,
+    tipo: l.territorio,
+    causas: l.causas.filter(c => TODAS_CAUSAS.includes(c)),
+    type: 'leader',
+    color: CAUSAS_COLORES[l.causas.find(c => TODAS_CAUSAS.includes(c))] || '#EBE5DC',
+    size: 8
+  }));
+
+  const nodes = [...causeNodes, ...leaderNodes];
+
+  const links = [];
+  LIDERES.forEach(l => {
+    l.causas.filter(c => TODAS_CAUSAS.includes(c)).forEach(c => {
+      links.push({ source: 'leader-' + l.id, target: 'cause-' + c });
+    });
+  });
+
+  const sim = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(links).id(d => d.id).distance(d => d.target.type === 'cause' ? 80 : 60).strength(0.6))
+    .force('charge', d3.forceManyBody().strength(d => d.type === 'cause' ? -400 : -80))
+    .force('center', d3.forceCenter(W / 2, H / 2))
+    .force('collision', d3.forceCollide(d => d.size + 4));
+
+  const link = g.append('g')
+    .selectAll('line')
+    .data(links)
+    .join('line')
+    .attr('stroke', d => {
+      const target = nodes.find(n => n.id === (typeof d.target === 'object' ? d.target.id : d.target));
+      return target ? target.color : '#ccc';
+    })
+    .attr('stroke-opacity', 0.35)
+    .attr('stroke-width', 1.5);
+
+  const node = g.append('g')
+    .selectAll('circle')
+    .data(nodes)
+    .join('circle')
+    .attr('r', d => d.size)
+    .attr('fill', d => d.color)
+    .attr('fill-opacity', d => d.type === 'cause' ? 0.9 : 0.75)
+    .attr('stroke', d => d.type === 'cause' ? '#fff' : 'rgba(0,0,0,.15)')
+    .attr('stroke-width', d => d.type === 'cause' ? 3 : 1.5)
+    .style('cursor', 'pointer')
+    .call(d3.drag()
+      .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; })
+    );
+
+  const label = g.append('g')
+    .selectAll('text')
+    .data(causeNodes)
+    .join('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', '0.35em')
+    .attr('font-family', 'Parkinsans, sans-serif')
+    .attr('font-size', 11)
+    .attr('font-weight', 700)
+    .attr('fill', d => CAUSAS_TEXTO_OSCURO[d.label] ? '#1A1208' : '#fff')
+    .attr('pointer-events', 'none')
+    .text(d => d.label);
+
+  const tooltip = document.getElementById('tooltip');
+
+  node.on('mouseover', (e, d) => {
+    tooltip.style.opacity = '1';
+    if (d.type === 'cause') {
+      const count = LIDERES.filter(l => l.causas.includes(d.label)).length;
+      tooltip.innerHTML = `<strong>${d.label}</strong><br>${count} líderes en esta causa`;
+    } else {
+      tooltip.innerHTML = `<strong>${d.label}</strong><br>${d.tipo}<br><span style="opacity:.6">${d.causas.join(', ')}</span>`;
+    }
+  })
+  .on('mousemove', e => {
+    tooltip.style.left = (e.clientX + 14) + 'px';
+    tooltip.style.top = (e.clientY - 8) + 'px';
+  })
+  .on('mouseout', () => { tooltip.style.opacity = '0'; });
+
+  node.on('click', (e, d) => {
+    if (d.type === 'leader') {
+      const id = d.id.replace('leader-', '');
+      window.location.href = `perfil.html?id=${id}`;
+    }
+  });
+
+  sim.on('tick', () => {
+    link
+      .attr('x1', d => d.source.x)
+      .attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x)
+      .attr('y2', d => d.target.y);
+    node
+      .attr('cx', d => Math.max(d.size, Math.min(W - d.size, d.x)))
+      .attr('cy', d => Math.max(d.size, Math.min(H - d.size, d.y)));
+    label
+      .attr('x', d => d.x)
+      .attr('y', d => d.y);
+  });
+
+  const netDiv = document.getElementById('net-cause-items');
+  TODAS_CAUSAS.forEach(c => {
+    const count = LIDERES.filter(l => l.causas.includes(c)).length;
+    const div = document.createElement('div');
+    div.className = 'net-item';
+    div.innerHTML = `
+      <div class="net-circle" style="width:${12 + count * 1.5}px;height:${12 + count * 1.5}px;background:${CAUSAS_COLORES[c]};border:2px solid rgba(0,0,0,.15)"></div>
+      <span>${c} (${count})</span>`;
+    netDiv.appendChild(div);
+  });
+}
+</script>
+
+</body>
+</html>
