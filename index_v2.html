@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -46,25 +47,22 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* ── NAV ── */
+    /* ── NAV (matches cienporcien.org's header: static, borderless, generous) ── */
     .nav {
-      position: sticky; top: 0; z-index: 100;
-      background: color-mix(in oklab, var(--cream) 88%, transparent);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid color-mix(in oklab, var(--ink) 8%, transparent);
+      position: static; background: transparent;
     }
     .nav-inner {
       max-width: 1280px; margin: 0 auto;
       display: flex; align-items: center; gap: 32px;
-      padding: 14px 32px;
+      padding: 28px 32px;
     }
     .nav-logo { display: flex; flex-direction: column; line-height: 1; }
     .logo-img { width: 150px; display: block; }
     .logo-img.invert { filter: brightness(0) invert(1); }
     .logo-sub { font-size: 10px; font-weight: 600; color: var(--mute); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
-    .nav-links { display: flex; gap: 28px; margin-left: auto; }
-    .nav-links a { font-size: 14px; font-weight: 600; color: var(--mute); transition: color .2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-links { display: flex; gap: 40px; margin-left: auto; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink); transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--orange); }
     .nav-cta {
       background: var(--orange); color: #fff;
       font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
@@ -76,20 +74,20 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 90vh;
-      background: linear-gradient(135deg, #FF641F 0%, #FFBE2F 48%, #FCC3EC 100%);
+      min-height: 94vh;
+      background: var(--cream);
       display: flex; align-items: center;
       position: relative; overflow: hidden;
     }
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(255,255,255,.18) 0%, transparent 70%);
+      background: radial-gradient(ellipse 70% 60% at 75% 40%, color-mix(in oklab, var(--peach) 30%, transparent) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-inner {
-      max-width: 1280px; margin: 0 auto; padding: 80px 32px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+      max-width: 1440px; margin: 0 auto; padding: 56px 102px; padding-top: 0;
+      display: grid; grid-template-columns: 1.1fr 1.25fr; gap: 0; align-items: center;
     }
     .hero-eyebrow {
       font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
@@ -99,8 +97,12 @@
     .hero-eyebrow::before {
       content: ''; width: 28px; height: 2px; background: rgba(26,18,8,.45); display: block;
     }
-    .hero-h1 { font-size: clamp(52px, 6vw, 84px); color: var(--ink); margin-bottom: 24px; }
-    .hero-h1 em { font-style: normal; color: rgba(255,255,255,.9); }
+    .hero-h1 { font-size: clamp(52px, 6vw, 80px); color: var(--ink); margin-bottom: 24px; }
+    .hero-h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--orange) 0%, var(--peach) 55%, var(--pink) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
     .hero-lead {
       font-size: 18px; line-height: 1.6; color: rgba(26,18,8,.8);
       margin: 0 0 20px; font-weight: 500;
@@ -119,35 +121,22 @@
     }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
     .btn-secondary {
-      background: rgba(255,255,255,.5); color: var(--ink);
+      background: var(--cream); color: var(--ink);
       font-size: 15px; font-weight: 700; padding: 14px 28px;
-      border-radius: 999px; border: 2px solid rgba(26,18,8,.2);
-      transition: background .2s, transform .15s;
-      backdrop-filter: blur(8px);
+      border-radius: 999px; border: 2px solid rgba(26,18,8,.15);
+      transition: background .2s, transform .15s, border-color .2s;
     }
-    .btn-secondary:hover { background: rgba(255,255,255,.7); transform: translateY(-2px); }
+    .btn-secondary:hover { background: var(--cream-2); border-color: rgba(26,18,8,.3); transform: translateY(-2px); }
 
-    /* Hero right: big numero decoration */
+    /* Hero right: network of leader photos, connected by shared causas */
     .hero-deco {
       display: flex; align-items: center; justify-content: center;
-      position: relative;
+      position: relative; width: 100%; height: 660px;
     }
-    .hero-deco-num {
-      font-family: 'Parkinsans', sans-serif;
-      font-size: clamp(160px, 18vw, 260px);
-      font-weight: 800; letter-spacing: -0.06em;
-      color: rgba(255,255,255,.25);
-      line-height: 1; user-select: none;
-    }
-    .hero-deco-label {
-      position: absolute; bottom: 20px; right: 0;
-      text-align: right;
-    }
-    .hero-deco-label strong {
-      display: block; font-family: 'Parkinsans', sans-serif;
-      font-size: 20px; color: rgba(26,18,8,.7);
-    }
-    .hero-deco-label span { font-size: 12px; color: rgba(26,18,8,.5); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+    #hero-network-svg { width: 100%; height: 100%; overflow: visible; }
+    .hero-network-node { cursor: pointer; }
+    .hero-network-node circle.ring { transition: stroke-width .15s; }
+    .hero-network-node:hover circle.ring { stroke-width: 4.5; }
 
     /* ── STATS STRIP ── */
     .stats {
@@ -253,12 +242,12 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
+    <a href="index_v2.html" class="nav-logo">
       <img src="images/logo.webp" alt="Cien por Cien" class="logo-img">
       <span class="logo-sub">Directorio de Liderazgos</span>
     </a>
     <div class="nav-links">
-      <a href="index.html" class="active">Inicio</a>
+      <a href="index_v2.html" class="active">Inicio</a>
       <a href="directorio.html">Directorio</a>
       <a href="visualizaciones.html">Visualizaciones</a>
     </div>
@@ -269,7 +258,7 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <p class="hero-eyebrow">Cien por Cien · Medellín 2026</p>
+      
       <h1 class="hero-h1">Directorio<br>Estratégico de<br><em>Liderazgos</em></h1>
       <p class="hero-lead" id="hero-lead">Líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.</p>
       <p class="hero-quote">"Detrás de cada territorio hay personas que están construyendo soluciones. Este directorio existe para encontrarlas."</p>
@@ -279,11 +268,7 @@
       </div>
     </div>
     <div class="hero-deco">
-      <span class="hero-deco-num" id="hero-deco-num">100</span>
-      <div class="hero-deco-label">
-        <strong>líderes</strong>
-        <span>en el territorio</span>
-      </div>
+      <svg id="hero-network-svg"></svg>
     </div>
   </div>
 </section>
@@ -390,7 +375,7 @@
   <div class="footer-inner">
     <div class="footer-left">
       <img src="images/logo.webp" alt="Cien por Cien" class="logo-img invert">
-      <div class="logo-sub" style="color:rgba(255,255,255,.4); margin-top:4px;">Directorio Estratégico de Liderazgos · Medellín 2026</div>
+      
       <div class="footer-note" id="footer-note"></div>
     </div>
     <div class="footer-right">
@@ -405,7 +390,6 @@
 <script>
   document.getElementById('hero-lead').textContent =
     `${STATS.total} líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.`;
-  document.getElementById('hero-deco-num').textContent = STATS.total;
   document.getElementById('qf-causa-desc').textContent =
     `${TODAS_CAUSAS.slice(0,4).join(', ')} y ${Math.max(TODAS_CAUSAS.length - 4, 0)} causas más.`;
 
@@ -424,11 +408,109 @@
 
   // ── FOOTER NOTE ──
   const withPhotoCount = LIDERES.filter(l => l.foto).length;
-  document.getElementById('footer-note').textContent =
-    `* ${withPhotoCount} de ${STATS.total} perfiles ya cuentan con fotografía individual. Los demás muestran un retrato provisional mientras se completa la recolección de imágenes.`;
+  
+
+  // ── HERO NETWORK: leader photos connected by shared causas ──
+  (function initHeroNetwork() {
+    const svgEl = document.getElementById('hero-network-svg');
+    const wrap = svgEl.parentElement;
+    const W = wrap.clientWidth || 520;
+    const H = wrap.clientHeight || 520;
+    if (!W || !H) return;
+
+    const picked = LIDERES; // all leaders — this is a decorative piece, not a filtered view
+
+    const nodes = picked.map(l => ({
+      id: l.id, nombre: l.nombre, foto: l.foto, causa: l.causas[0],
+      r: 16 + (l.id.length % 4) * 3
+    }));
+
+    const links = [];
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const shared = picked[i].causas.find(c => picked[j].causas.includes(c));
+        if (shared) links.push({ source: nodes[i].id, target: nodes[j].id, causa: shared });
+      }
+    }
+    const MAX_LINKS = 100;
+    const cappedLinks = links.length > MAX_LINKS ? d3.shuffle(links.slice()).slice(0, MAX_LINKS) : links;
+
+    // Guarantee every node has at least one link, so isolated causas (no
+    // overlap with the rest of the sample) don't drift away from the cluster.
+    const linked = new Set();
+    cappedLinks.forEach(l => { linked.add(l.source); linked.add(l.target); });
+    nodes.forEach((d, i) => {
+      if (linked.has(d.id)) return;
+      const neighbor = nodes[(i + 1) % nodes.length];
+      cappedLinks.push({ source: d.id, target: neighbor.id, causa: d.causa });
+      linked.add(d.id);
+    });
+
+    const sim = d3.forceSimulation(nodes)
+      .force('link', d3.forceLink(cappedLinks).id(d => d.id).distance(50).strength(0.5))
+      .force('charge', d3.forceManyBody().strength(-30))
+      .force('center', d3.forceCenter(W / 2, H / 2))
+      .force('x', d3.forceX(W / 2).strength(0.03))
+      .force('y', d3.forceY(H / 2).strength(0.03))
+      .force('collision', d3.forceCollide(d => d.r + 4))
+      .stop();
+    for (let i = 0; i < 400; i++) sim.tick();
+    nodes.forEach(d => {
+      d.x = Math.max(d.r + 4, Math.min(W - d.r - 4, d.x));
+      d.y = Math.max(d.r + 4, Math.min(H - d.r - 4, d.y));
+    });
+
+    const svg = d3.select(svgEl).attr('viewBox', `0 0 ${W} ${H}`);
+    const defs = svg.append('defs');
+    const g = svg.append('g');
+
+    g.selectAll('line').data(cappedLinks).join('line')
+      .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x).attr('y2', d => d.target.y)
+      .attr('stroke', d => CAUSAS_COLORES[d.causa] || '#D8CFC2')
+      .attr('stroke-opacity', 0.45).attr('stroke-width', 1.4);
+
+    const nodeG = g.selectAll('a.hero-network-node').data(nodes).join('a')
+      .attr('class', 'hero-network-node')
+      .attr('href', d => `perfil.html?id=${d.id}`);
+
+    nodeG.each(function (d, i) {
+      if (!d.foto) return;
+      defs.append('clipPath').attr('id', `hero-clip-${i}`)
+        .append('circle').attr('cx', d.x).attr('cy', d.y).attr('r', d.r);
+    });
+
+    // Leaders with a real photo
+    nodeG.filter(d => d.foto).append('image')
+      .attr('href', d => d.foto)
+      .attr('x', d => d.x - d.r).attr('y', d => d.y - d.r)
+      .attr('width', d => d.r * 2).attr('height', d => d.r * 2)
+      .attr('preserveAspectRatio', 'xMidYMid slice')
+      .attr('clip-path', (d, i) => `url(#hero-clip-${i})`);
+
+    // Leaders without a photo yet: solid causa-colored circle + initials
+    const noPhoto = nodeG.filter(d => !d.foto);
+    noPhoto.append('circle')
+      .attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => d.r)
+      .attr('fill', d => CAUSAS_COLORES[d.causa] || '#D8CFC2');
+    noPhoto.append('text')
+      .attr('x', d => d.x).attr('y', d => d.y)
+      .attr('text-anchor', 'middle').attr('dominant-baseline', 'central')
+      .attr('font-family', 'Parkinsans, sans-serif').attr('font-weight', 800)
+      .attr('font-size', d => Math.max(9, d.r * 0.7))
+      .attr('fill', d => CAUSAS_TEXTO_OSCURO[d.causa] ? '#1A1208' : '#fff')
+      .text(d => initials(d.nombre));
+
+    nodeG.append('circle')
+      .attr('class', 'ring')
+      .attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => d.r)
+      .attr('fill', 'none').attr('stroke', '#F5F0E8').attr('stroke-width', 2.5);
+
+    nodeG.append('title').text(d => d.nombre);
+  })();
 </script>
 
-<a href="index-v2.html" style="position:fixed;bottom:20px;right:20px;z-index:200;background:var(--ink);color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25);">Ver v2 →</a>
+<a href="index.html" style="position:fixed;bottom:20px;right:20px;z-index:200;background:var(--ink);color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25);">← Ver diseño actual</a>
 
 </body>
 </html>

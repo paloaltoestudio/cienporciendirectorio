@@ -30,3 +30,30 @@ function tagHTML(causa, extraStyle) {
 function photoStyleAttr(l) {
   return l.foto ? `background-image:url('${l.foto}')` : `background:${initialsGradient(l.nombre)}`;
 }
+
+// Leaders filled in the "Instagram" / "Sitio Web" form fields with everything
+// from a clean URL to "NA", "En construcción", or a whole sentence. Only
+// return a link when the text actually looks like one — otherwise the caller
+// should render it as plain text instead of a broken/misleading link.
+const LINK_PLACEHOLDER_RE = /^(na|n\.a\.?|n\/a|ninguna?|no tengo|no aplica|en construcci[oó]n|redes sociales|pendiente|-+)$/i;
+
+function resolveLink(raw, isInstagram) {
+  if (!raw) return null;
+  const s = String(raw).trim();
+  if (!s || LINK_PLACEHOLDER_RE.test(s)) return null;
+
+  const urlMatch = s.match(/https?:\/\/[^\s,;]+/);
+  if (urlMatch) return urlMatch[0].replace(/[)>\].,;]+$/, '');
+
+  const wwwMatch = s.match(/\bwww\.[^\s,;]+/i);
+  if (wwwMatch) return 'https://' + wwwMatch[0];
+
+  if (isInstagram) {
+    const handleMatch = s.match(/@[\w.\-]+/);
+    if (handleMatch) return 'https://instagram.com/' + handleMatch[0].slice(1);
+    if (/^[\w.\-]{2,30}$/.test(s)) return 'https://instagram.com/' + s;
+  } else {
+    if (/^[\w.\-]+\.[a-z]{2,}(\/[\w.\-\/?=&%]*)?$/i.test(s)) return 'https://' + s;
+  }
+  return null;
+}

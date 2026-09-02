@@ -407,6 +407,8 @@ function initNetwork() {
     if (d.type === 'leader') {
       const id = d.id.replace('leader-', '');
       window.location.href = `perfil.html?id=${id}`;
+    } else if (d.type === 'cause') {
+      window.location.href = `directorio.html?causa=${encodeURIComponent(d.label)}`;
     }
   });
 

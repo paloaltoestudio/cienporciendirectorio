@@ -391,7 +391,16 @@
   // ── URL PARAMS ──
   const params = new URLSearchParams(window.location.search);
   const initFiltro = params.get('filtro');
-  if (initFiltro === 'causa') {
+  const initCausa = params.get('causa');
+
+  if (initCausa) {
+    const pill = [...document.querySelectorAll('.cause-pill')].find(p => p.dataset.causa === initCausa);
+    if (pill) {
+      document.querySelectorAll('.cause-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    }
+    document.getElementById('cause-pills-wrap').scrollIntoView({ behavior: 'smooth' });
+  } else if (initFiltro === 'causa') {
     document.getElementById('cause-pills-wrap').scrollIntoView({ behavior: 'smooth' });
   }
 

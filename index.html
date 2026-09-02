@@ -47,22 +47,25 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* ── NAV (matches cienporcien.org's header: static, borderless, generous) ── */
+    /* ── NAV ── */
     .nav {
-      position: static; background: transparent;
+      position: sticky; top: 0; z-index: 100;
+      background: color-mix(in oklab, var(--cream) 88%, transparent);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid color-mix(in oklab, var(--ink) 8%, transparent);
     }
     .nav-inner {
       max-width: 1280px; margin: 0 auto;
       display: flex; align-items: center; gap: 32px;
-      padding: 28px 32px;
+      padding: 14px 32px;
     }
     .nav-logo { display: flex; flex-direction: column; line-height: 1; }
     .logo-img { width: 150px; display: block; }
     .logo-img.invert { filter: brightness(0) invert(1); }
     .logo-sub { font-size: 10px; font-weight: 600; color: var(--mute); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
-    .nav-links { display: flex; gap: 40px; margin-left: auto; }
-    .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink); transition: color .2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--orange); }
+    .nav-links { display: flex; gap: 28px; margin-left: auto; }
+    .nav-links a { font-size: 14px; font-weight: 600; color: var(--mute); transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
     .nav-cta {
       background: var(--orange); color: #fff;
       font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
@@ -75,34 +78,22 @@
     /* ── HERO ── */
     .hero {
       min-height: 94vh;
-      background: var(--cream);
+      background: linear-gradient(135deg, #FF641F 0%, #FFBE2F 48%, #FCC3EC 100%);
       display: flex; align-items: center;
       position: relative; overflow: hidden;
     }
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 75% 40%, color-mix(in oklab, var(--peach) 30%, transparent) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(255,255,255,.18) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-inner {
       max-width: 1440px; margin: 0 auto; padding: 56px 102px; padding-top: 0;
       display: grid; grid-template-columns: 1.1fr 1.25fr; gap: 0; align-items: center;
     }
-    .hero-eyebrow {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: rgba(26,18,8,.65);
-      margin: 0 0 20px; display: flex; align-items: center; gap: 8px;
-    }
-    .hero-eyebrow::before {
-      content: ''; width: 28px; height: 2px; background: rgba(26,18,8,.45); display: block;
-    }
     .hero-h1 { font-size: clamp(52px, 6vw, 80px); color: var(--ink); margin-bottom: 24px; }
-    .hero-h1 em {
-      font-style: normal;
-      background: linear-gradient(90deg, var(--orange) 0%, var(--peach) 55%, var(--pink) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
+    .hero-h1 em { font-style: normal; color: rgba(255,255,255,.9); }
     .hero-lead {
       font-size: 18px; line-height: 1.6; color: rgba(26,18,8,.8);
       margin: 0 0 20px; font-weight: 500;
@@ -121,12 +112,13 @@
     }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
     .btn-secondary {
-      background: var(--cream); color: var(--ink);
+      background: rgba(255,255,255,.5); color: var(--ink);
       font-size: 15px; font-weight: 700; padding: 14px 28px;
-      border-radius: 999px; border: 2px solid rgba(26,18,8,.15);
-      transition: background .2s, transform .15s, border-color .2s;
+      border-radius: 999px; border: 2px solid rgba(26,18,8,.2);
+      transition: background .2s, transform .15s;
+      backdrop-filter: blur(8px);
     }
-    .btn-secondary:hover { background: var(--cream-2); border-color: rgba(26,18,8,.3); transform: translateY(-2px); }
+    .btn-secondary:hover { background: rgba(255,255,255,.7); transform: translateY(-2px); }
 
     /* Hero right: network of leader photos, connected by shared causas */
     .hero-deco {
@@ -242,12 +234,12 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index-v2.html" class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <img src="images/logo.webp" alt="Cien por Cien" class="logo-img">
       <span class="logo-sub">Directorio de Liderazgos</span>
     </a>
     <div class="nav-links">
-      <a href="index-v2.html" class="active">Inicio</a>
+      <a href="index.html" class="active">Inicio</a>
       <a href="directorio.html">Directorio</a>
       <a href="visualizaciones.html">Visualizaciones</a>
     </div>
@@ -258,7 +250,6 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      
       <h1 class="hero-h1">Directorio<br>Estratégico de<br><em>Liderazgos</em></h1>
       <p class="hero-lead" id="hero-lead">Líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.</p>
       <p class="hero-quote">"Detrás de cada territorio hay personas que están construyendo soluciones. Este directorio existe para encontrarlas."</p>
@@ -375,7 +366,7 @@
   <div class="footer-inner">
     <div class="footer-left">
       <img src="images/logo.webp" alt="Cien por Cien" class="logo-img invert">
-      
+      <div class="logo-sub" style="color:rgba(255,255,255,.4); margin-top:4px;">Directorio Estratégico de Liderazgos · Medellín 2026</div>
       <div class="footer-note" id="footer-note"></div>
     </div>
     <div class="footer-right">
@@ -509,8 +500,6 @@
     nodeG.append('title').text(d => d.nombre);
   })();
 </script>
-
-
 
 </body>
 </html>

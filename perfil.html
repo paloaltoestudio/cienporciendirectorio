@@ -384,8 +384,18 @@
   const contactItems = [];
   if (lider.contacto.email) contactItems.push(`<a href="mailto:${lider.contacto.email}" class="contact-item link">✉ ${lider.contacto.email}</a>`);
   if (lider.contacto.telefono) contactItems.push(`<span class="contact-item">📞 ${lider.contacto.telefono}</span>`);
-  if (lider.contacto.instagram) contactItems.push(`<span class="contact-item">📸 ${lider.contacto.instagram}</span>`);
-  if (lider.contacto.web) contactItems.push(`<a href="${/^https?:\/\//.test(lider.contacto.web) ? lider.contacto.web : 'https://' + lider.contacto.web}" target="_blank" rel="noopener" class="contact-item link">🌐 ${lider.contacto.web}</a>`);
+  if (lider.contacto.instagram) {
+    const igHref = resolveLink(lider.contacto.instagram, true);
+    contactItems.push(igHref
+      ? `<a href="${igHref}" target="_blank" rel="noopener" class="contact-item link">📸 ${lider.contacto.instagram}</a>`
+      : `<span class="contact-item">📸 ${lider.contacto.instagram}</span>`);
+  }
+  if (lider.contacto.web) {
+    const webHref = resolveLink(lider.contacto.web, false);
+    contactItems.push(webHref
+      ? `<a href="${webHref}" target="_blank" rel="noopener" class="contact-item link">🌐 ${lider.contacto.web}</a>`
+      : `<span class="contact-item">🌐 ${lider.contacto.web}</span>`);
+  }
 
   document.getElementById('contact-section').innerHTML = `
     <div class="contact-card">

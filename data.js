@@ -2,7 +2,7 @@
 // Datos reales generados desde 'DIRECTORIO LÍDERES (Respuestas).xlsx'
 
 const CAUSAS_COLORES = {
-  "Ambiente": "#F5C542",
+  "Ambiente": "#4FB477",
   "Arte": "#E8885A",
   "Bienestar": "#F5C542",
   "Bienestar Integral En La Fundación Realizamos De Todas La…": "#B4A6E0",
@@ -87,15 +87,15 @@ const CAUSAS_TEXTO_OSCURO = {
 
 const TODAS_CAUSAS = ["Educación", "Salud Mental", "Cultura", "Juventud", "Emprendimiento", "Mujeres", "Participación Ciudadana", "Ambiente", "Paz", "Derechos Humanos"];
 
-const TODOS_TERRITORIOS = ["Area metropolitana", "BELEN Y DOCE DE OCTUBRE", "Barrio la cruz comuna 3 Medellín", "Belén, Laureles, Moravia, El Poblado", "Buenos Aires - Medellín", "Comuna 10", "Comuna 10 - Envigado", "Comuna 10 - La Candelaria", "Comuna 10 - Medellín", "Comuna 11", "Comuna 12 ,La America", "Comuna 13", "Comuna 14", "Comuna 14 - Medellín", "Comuna 14, El Poblado", "Comuna 3 Manrique", "Comuna 4", "Comuna 4- Medellín", "Comuna 5", "Comuna 5, castilla", "Comuna 8 y 9 (Villa Hermosa, Buenos Aires) Medellín", "Comunas 10, 1, 3, etc", "Comunas 2 y 1, queremos llegar a todo Antioquia", "El Poblado", "El Poblado, Medellín", "En las 16 comunas", "Enviado - Támesis", "Envigado", "Global", "La Honda, Manrique (Comuna 3), Medellin", "Llevamos a cabo el programa en 3 sectores: Comuna 80 - El Limonar; Comuna 13 - Blanquizal; Comuna 8 - La Sierra", "Medellin", "Medellín", "Medellín y El Retiro", "Medellín, Poblado", "Medellín, comuna 13", "Nacional", "Planeta Rica, Córdoba", "Poblado", "Poblado, Medellin", "Rionegro", "SANTA ELENA y Medellín", "San Antonio de Prado", "San Pedro de Uraba Antioquia", "Sna Sebastián de palmitas", "Toda la ciudad de Medellín", "Área Metropolitana Valle de Aburrá"];
+const TODOS_TERRITORIOS = ["Area metropolitana", "BELEN Y DOCE DE OCTUBRE", "Barrio la cruz comuna 3 Medellín", "Belén, Laureles, Moravia, El Poblado", "Buenos Aires - Medellín", "Comuna 10", "Comuna 10 - Envigado", "Comuna 10 - La Candelaria", "Comuna 10 - Medellín", "Comuna 10- LA CANDERIA", "Comuna 11", "Comuna 12 ,La America", "Comuna 13", "Comuna 14", "Comuna 14 - Medellín", "Comuna 14, El Poblado", "Comuna 3 Manrique", "Comuna 4", "Comuna 4- Medellín", "Comuna 5", "Comuna 5, castilla", "Comuna 8 y 9 (Villa Hermosa, Buenos Aires) Medellín", "Comunas 10, 1, 3, etc", "Comunas 2 y 1, queremos llegar a todo Antioquia", "El Poblado", "El Poblado, Medellín", "En las 16 comunas", "Enviado - Támesis", "Envigado", "Global", "La Honda, Manrique (Comuna 3), Medellin", "Llevamos a cabo el programa en 3 sectores: Comuna 80 - El Limonar; Comuna 13 - Blanquizal; Comuna 8 - La Sierra", "Medellin", "Medellín", "Medellín y El Retiro", "Medellín y municipios de Antioquia , otras ciudades", "Medellín, Poblado", "Medellín, comuna 13", "Nacional", "Planeta Rica, Córdoba", "Poblado", "Poblado, Medellin", "Rionegro", "SANTA ELENA y Medellín", "San Antonio de Prado", "San Pedro de Uraba Antioquia", "Sna Sebastián de palmitas", "Toda la ciudad de Medellín", "Área Metropolitana Valle de Aburrá"];
 
 const BUSCA_OPCIONES = ["Alianzas Estratégicas", "Visibilidad", "Financiación", "Formación", "Mentoría", "Voluntariado"];
 
 const OFRECE_OPCIONES = ["Formación", "Consultoría", "Articulación Territorial", "Facilitación", "Movilización Comunitaria", "Investigación"];
 
 const CAPACIDADES_DATA = {
-  labels: ["Formación", "Gestión De Proyectos", "Comunicación", "Organización Comunitaria", "Arte", "Cultura", "Incidencia", "Investigación", "Mediación De Conflictos", "Tecnología"],
-  values: [41, 33, 24, 15, 15, 15, 15, 12, 10, 4]
+  labels: ["Formación", "Gestión De Proyectos", "Comunicación", "Arte", "Cultura", "Organización Comunitaria", "Incidencia", "Investigación", "Mediación De Conflictos", "Tecnología"],
+  values: [43, 34, 26, 16, 16, 15, 15, 12, 11, 4]
 };
 
 const LIDERES = [
@@ -3429,12 +3429,121 @@ const LIDERES = [
       "instagram": "Daviidpperez"
     },
     "foto": "images/lideres/anderson-david-perez-mesa-61-0-primary.webp"
+  },
+  {
+    "id": "david-alejandro-ganan-gonzalez",
+    "numero": "63",
+    "nombre": "David Alejandro Gañan Gonzalez",
+    "organizacion": "Federación Nacional de Representantes Estudiantiles (FENARES).",
+    "territorio": "Comuna 10- LA CANDERIA",
+    "municipio": "Medellín",
+    "fotos": [
+      "david-alejandro-ganan-gonzalez-62-0-primary.webp",
+      "david-alejandro-ganan-gonzalez-62-1.webp",
+      "david-alejandro-ganan-gonzalez-62-2.webp"
+    ],
+    "causas": [
+      "Educación"
+    ],
+    "poblacion": [
+      "Juventud",
+      "Víctimas"
+    ],
+    "capacidades": [
+      "Formación",
+      "Comunicación",
+      "Mediación De Conflictos"
+    ],
+    "busca": [
+      "Mentoría",
+      "Formación",
+      "Visibilidad"
+    ],
+    "ofrece": [
+      "Formación",
+      "Movilización Comunitaria",
+      "Facilitación"
+    ],
+    "experiencia": 9,
+    "disponible_alianzas": true,
+    "que_hace": "Como parte de mi labor con la Federación Nacional de Representantes Estudiantiles (FENARES), trabajo en el fortalecimiento institucional, la articulación de liderazgos universitarios a nivel nacional y la estructuración de mecanismos de participación para los voceros estudiantiles.",
+    "problema": "El trabajo articulado a través de la Federación Nacional de Representantes Estudiantiles (FENARES) aborda la desarticulación y falta de incidencia efectiva de los estamentos estudiantiles en el diseño de las políticas públicas de educación superior y la gestión del bienestar universitario. Concretamente, ayuda a resolver tres problemáticas estructurales: Brecha entre las políticas públicas nacionales y la realidad territorial: Las decisiones en educación superior (como reformas normativas, financiamiento o criterios de acreditación) suelen diseñarse centralizadamente. FENARES agrega las voces de líderes de todo el país para incidir con análisis técnico e insumos territoriales reales ante el Ministerio de Educación y órganos de decisión, transformando demandas aisladas en propuestas de política pública viables. Deficiencia y desactualización en los programas de Bienestar Universitario: En muchas instituciones, el bienestar se reduce a actividades recreativas y no a una estrategia integral de permanencia. Se abordan las deficiencias en salud mental, apoyos socioeconómicos y deserción escolar mediante diagnósticos comparados y modelos de buenas prácticas entre universidades para exigir y estructurar políticas de bienestar con enfoque de derechos y equidad. Fragmentación del liderazgo estudiantil y falta de continuidad: La alta rotación de los representantes genera pérdida de memoria histórica y capacidades técnicas. Se resuelve esto estandarizando herramientas de gestión, formación normativa y redes de gobernanza para que la representación estudiantil sea rigurosa, propositiva y con capacidad de negociación frente a las directivas universitarias y el Gobierno. Resultado concreto: Se pasa de la protesta o el reclamo desarticulado a una incidencia técnica, estructurada y de alcance nacional que impacta directamente en marcos normativos, asignación de recursos para bienestar y garantías reales para la permanencia estudiantil.",
+    "con_quien": "Trabajo de manera directa con estudiantes de educación superior, representantes y líderes estudiantiles de instituciones públicas y privadas a lo largo del país, articulando esfuerzos a través de la red de la Federación Nacional de Representantes Estudiantiles (FENARES). Las poblaciones y territorios específicos en los que se focaliza esta labor comprenden: Poblaciones objetivo: Estudiantes universitarios y de instituciones de educación superior (IES): Especialmente aquellos en condiciones de vulnerabilidad socioeconómica, quienes enfrentan mayores barreras de permanencia y acceso a programas integrales de bienestar universitario. Líderes y voceros estudiantiles: Representantes electos a consejos superiores, académicos y comités institucionales de diversas IES de Colombia, que requieren fortalecimiento en capacidades técnicas, normativas y de negociación. Territorios específicos: Regiones y sedes descentralizadas: Enfoque prioritario en instituciones localizadas en departamentos y zonas donde la oferta institucional y los recursos para educación pública y bienestar son más limitados en comparación con las principales capitales (zonas del Pacífico, Caribe, Amazonía, Orinoquía y la región Andina). Nivel nacional y centros urbanos: Articulación con representaciones de las grandes universidades del país para consolidar una agenda común ante los entes territoriales y el Ministerio de Educación Nacional.",
+    "que_ofrece_largo": "Conocimiento y rede contactos",
+    "frase_vision": "Transformar la educación superior en Colombia consolidando representaciones estudiantiles colectivas, rigurosas e incidentes en las políticas públicas y en el bienestar integral de nuestras comunidades universitarias.",
+    "alianzas_activas": "",
+    "proyecto_autogestion": "",
+    "contacto": {
+      "email": "da-vi-02@hotmail.es",
+      "telefono": "+573117705435",
+      "web": null,
+      "instagram": "https://www.instagram.com/fenaresoficial/"
+    },
+    "foto": "images/lideres/david-alejandro-ganan-gonzalez-62-0-primary.webp"
+  },
+  {
+    "id": "clara-robledo-moreno",
+    "numero": "64",
+    "nombre": "Clara Robledo Moreno",
+    "organizacion": "LaSavia · Laboratorio Botánico",
+    "territorio": "Medellín y municipios de Antioquia , otras ciudades",
+    "municipio": "Medellín",
+    "fotos": [
+      "clara-robledo-moreno-63-0-primary.webp",
+      "clara-robledo-moreno-63-1.webp",
+      "clara-robledo-moreno-63-2.webp"
+    ],
+    "causas": [
+      "Educación",
+      "Ambiente",
+      "Cultura"
+    ],
+    "poblacion": [
+      "Comunidad Rural",
+      "Urbana",
+      "Juventud",
+      "Campesinado"
+    ],
+    "capacidades": [
+      "Formación",
+      "Gestión De Proyectos",
+      "Comunicación",
+      "Arte",
+      "Cultura"
+    ],
+    "busca": [
+      "Financiación",
+      "Alianzas Estratégicas",
+      "Visibilidad"
+    ],
+    "ofrece": [
+      "Formación",
+      "Consultoría",
+      "Facilitación",
+      "Divulgación"
+    ],
+    "experiencia": 15,
+    "disponible_alianzas": true,
+    "que_hace": "Diseño y desarrollo procesos de educación, investigación, divulgación y acompañamiento en torno a la biodiversidad, las soluciones basadas en la naturaleza y la regeneración. Integro conocimientos científicos y saberes de los territorios para crear experiencias educativas, culturales y de comunicación que fortalezcan el vínculo con la naturaleza y las acciones de conservación.",
+    "problema": "Contribuyo a cerrar la brecha entre el conocimiento sobre la biodiversidad y las decisiones y acciones que permiten cuidarla. Desarrollo metodologías y experiencias que facilitan la apropiación social del conocimiento, fortalecen capacidades locales y promueven relaciones más conscientes y regenerativas entre las personas, los territorios y la naturaleza.",
+    "con_quien": "Trabajo con comunidades rurales y urbanas, organizaciones sociales, instituciones educativas, entidades públicas y privadas, colectivos culturales y ambientales, así como con diferentes públicos interesados en la biodiversidad. Desarrollo procesos en territorios rurales, campesinos y urbanos, adaptando las metodologías a sus contextos, saberes y necesidades.",
+    "que_ofrece_largo": "Aporto más de 15 años de experiencia articulando biodiversidad, educación, comunicación, cultura y trabajo territorial. Ofrezco diseño metodológico, investigación, facilitación de diálogos sociales e interculturales, formación, creación de contenidos pedagógicos y divulgativos, expediciones botánicas, Agro Tours Campesinos, talleres y experiencias educativas, además del diseño y desarrollo de proyectos especiales para eventos, exposiciones y medios audiovisuales.",
+    "frase_vision": "Una sociedad que reconoce la biodiversidad como parte esencial de la vida y fortalece, desde sus territorios y saberes, relaciones capaces de regenerarla y cuidarla.",
+    "alianzas_activas": "",
+    "proyecto_autogestion": "",
+    "contacto": {
+      "email": "lasavia.contacto@gmail.com",
+      "telefono": "+573137486390",
+      "web": null,
+      "instagram": "Instagram y Youtube: @LaSavia.Vegetal"
+    },
+    "foto": "images/lideres/clara-robledo-moreno-63-0-primary.webp"
   }
 ];
 
 const STATS = {
-  total: 62,
-  territorios: 47,
+  total: 64,
+  territorios: 49,
   causas: 10,
-  disponibles: 62
+  disponibles: 64
 };
