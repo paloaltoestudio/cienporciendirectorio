@@ -31,6 +31,16 @@ function photoStyleAttr(l) {
   return l.foto ? `background-image:url('${l.foto}')` : `background:${initialsGradient(l.nombre)}`;
 }
 
+// Fisher-Yates shuffle, in place. Used where we want a different pick each
+// page load (e.g. related leaders) instead of always the same few.
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 // Leaders filled in the "Instagram" / "Sitio Web" form fields with everything
 // from a clean URL to "NA", "En construcción", or a whole sentence. Only
 // return a link when the text actually looks like one — otherwise the caller
