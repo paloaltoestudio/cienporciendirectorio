@@ -399,7 +399,8 @@
 
   // ── FOOTER NOTE ──
   const withPhotoCount = LIDERES.filter(l => l.foto).length;
-  
+  document.getElementById('footer-note').textContent =
+    `* ${withPhotoCount} de ${STATS.total} perfiles ya cuentan con fotografía individual. Los demás muestran un retrato provisional mientras se completa la recolección de imágenes.`;
 
   // ── HERO NETWORK: leader photos connected by shared causas ──
   (function initHeroNetwork() {
@@ -471,26 +472,36 @@
         .append('circle').attr('cx', d.x).attr('cy', d.y).attr('r', d.r);
     });
 
-    // Leaders with a real photo
+    // Every node gets its causa-colored circle + initials drawn FIRST, for
+    // everyone — not just leaders without a photo. A leader's <image> is then
+    // layered on top. SVG <image> renders as transparent when it fails or
+    // hasn't finished loading (no broken-image icon like HTML <img>), so if
+    // a photo load stalls or errors — even silently, with neither a `load`
+    // nor an `error` event ever firing — the fallback underneath just keeps
+    // showing through. No circle can ever end up blank.
+    nodeG.each(function (d) {
+      const parent = d3.select(this);
+      const color = CAUSAS_COLORES[d.causa] || '#D8CFC2';
+      const dark = CAUSAS_TEXTO_OSCURO[d.causa];
+      parent.append('circle')
+        .attr('cx', d.x).attr('cy', d.y).attr('r', d.r)
+        .attr('fill', color);
+      parent.append('text')
+        .attr('x', d.x).attr('y', d.y)
+        .attr('text-anchor', 'middle').attr('dominant-baseline', 'central')
+        .attr('font-family', 'Parkinsans, sans-serif').attr('font-weight', 800)
+        .attr('font-size', Math.max(9, d.r * 0.7))
+        .attr('fill', dark ? '#1A1208' : '#fff')
+        .text(initials(d.nombre));
+    });
+
+    // Leaders with a real photo: layer it on top of the fallback.
     nodeG.filter(d => d.foto).append('image')
       .attr('href', d => d.foto)
       .attr('x', d => d.x - d.r).attr('y', d => d.y - d.r)
       .attr('width', d => d.r * 2).attr('height', d => d.r * 2)
       .attr('preserveAspectRatio', 'xMidYMid slice')
       .attr('clip-path', (d, i) => `url(#hero-clip-${i})`);
-
-    // Leaders without a photo yet: solid causa-colored circle + initials
-    const noPhoto = nodeG.filter(d => !d.foto);
-    noPhoto.append('circle')
-      .attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => d.r)
-      .attr('fill', d => CAUSAS_COLORES[d.causa] || '#D8CFC2');
-    noPhoto.append('text')
-      .attr('x', d => d.x).attr('y', d => d.y)
-      .attr('text-anchor', 'middle').attr('dominant-baseline', 'central')
-      .attr('font-family', 'Parkinsans, sans-serif').attr('font-weight', 800)
-      .attr('font-size', d => Math.max(9, d.r * 0.7))
-      .attr('fill', d => CAUSAS_TEXTO_OSCURO[d.causa] ? '#1A1208' : '#fff')
-      .text(d => initials(d.nombre));
 
     nodeG.append('circle')
       .attr('class', 'ring')

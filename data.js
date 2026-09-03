@@ -3496,7 +3496,8 @@ const LIDERES = [
     "causas": [
       "Educación",
       "Ambiente",
-      "Cultura"
+      "Cultura",
+      "Emprendimiento"
     ],
     "poblacion": [
       "Comunidad Rural",
