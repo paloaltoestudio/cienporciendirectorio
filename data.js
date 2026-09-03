@@ -3494,10 +3494,10 @@ const LIDERES = [
       "clara-robledo-moreno-63-2.webp"
     ],
     "causas": [
-      "Educación",
-      "Emprendimiento",
       "Ambiente",
-      "Cultura"
+      "Educación",
+      "Cultura",
+      "Emprendimiento"
     ],
     "poblacion": [
       "Comunidad Rural",

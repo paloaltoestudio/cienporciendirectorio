@@ -388,7 +388,7 @@
     empty.style.display = 'none';
 
     grid.innerHTML = filtered.map(l => {
-      const causas = l.causas.slice(0, 3).map(c => tagHTML(c)).join('');
+      const causas = l.causas.slice(0, 4).map(c => tagHTML(c)).join('');
       return `
         <a href="perfil.html?id=${l.id}" class="leader-card">
           <div class="card-avatar-wrap">
