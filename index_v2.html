@@ -503,9 +503,9 @@
       .attr('class', 'hero-network-node')
       .attr('href', d => `perfil.html?id=${d.id}`);
 
-    nodeG.each(function (d, i) {
+    nodeG.each(function (d) {
       if (!d.foto) return;
-      defs.append('clipPath').attr('id', `hero-clip-${i}`)
+      defs.append('clipPath').attr('id', `hero-clip-${d.id}`)
         .append('circle').attr('cx', d.x).attr('cy', d.y).attr('r', d.r);
     });
 
@@ -515,7 +515,7 @@
       .attr('x', d => d.x - d.r).attr('y', d => d.y - d.r)
       .attr('width', d => d.r * 2).attr('height', d => d.r * 2)
       .attr('preserveAspectRatio', 'xMidYMid slice')
-      .attr('clip-path', (d, i) => `url(#hero-clip-${i})`);
+      .attr('clip-path', d => `url(#hero-clip-${d.id})`);
 
     // Leaders without a photo yet: solid causa-colored circle + initials
     const noPhoto = nodeG.filter(d => !d.foto);
