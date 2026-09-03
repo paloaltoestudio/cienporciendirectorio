@@ -145,9 +145,10 @@
     .card-territory {
       font-size: 12px; color: var(--mute); margin-bottom: 12px;
       display: flex; align-items: center; justify-content: center; gap: 4px;
-      max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      max-width: 100%;
     }
     .card-territory::before { content: '📍'; font-size: 11px; flex-shrink: 0; }
+    .card-territory-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
     .card-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; flex: 1; align-content: flex-start; }
     .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.02em; padding: 4px 10px; border-radius: 999px; }
     .card-cta {
@@ -359,7 +360,7 @@
           </div>
           <div class="card-name">${l.nombre}</div>
           <div class="card-org">${l.organizacion}</div>
-          <div class="card-territory">${l.territorio}</div>
+          <div class="card-territory"><span class="card-territory-text">${l.territorio}</span></div>
           <div class="card-tags">${causas}</div>
           <div class="card-cta">
             <span class="card-exp">${l.experiencia} años liderando</span>
