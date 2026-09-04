@@ -85,17 +85,17 @@ const CAUSAS_TEXTO_OSCURO = {
   "Trabajo En Equipo": false
 };
 
-const TODAS_CAUSAS = ["Educación", "Salud Mental", "Cultura", "Juventud", "Emprendimiento", "Mujeres", "Participación Ciudadana", "Ambiente", "Paz", "Derechos Humanos"];
+const TODAS_CAUSAS = ["Educación", "Salud Mental", "Cultura", "Emprendimiento", "Mujeres", "Juventud", "Participación Ciudadana", "Ambiente", "Paz", "Derechos Humanos"];
 
-const TODOS_TERRITORIOS = ["Area metropolitana", "BELEN Y DOCE DE OCTUBRE", "Barrio la cruz comuna 3 Medellín", "Belén, Laureles, Moravia, El Poblado", "Buenos Aires - Medellín", "Comuna 10", "Comuna 10 - Envigado", "Comuna 10 - La Candelaria", "Comuna 10 - Medellín", "Comuna 10- LA CANDERIA", "Comuna 11", "Comuna 12 ,La America", "Comuna 13", "Comuna 14", "Comuna 14 - Medellín", "Comuna 14, El Poblado", "Comuna 3 Manrique", "Comuna 4", "Comuna 4- Medellín", "Comuna 5", "Comuna 5, castilla", "Comuna 8 y 9 (Villa Hermosa, Buenos Aires) Medellín", "Comunas 10, 1, 3, etc", "Comunas 2 y 1, queremos llegar a todo Antioquia", "El Poblado", "El Poblado, Medellín", "En las 16 comunas", "Enviado - Támesis", "Envigado", "Global", "La Honda, Manrique (Comuna 3), Medellin", "Llevamos a cabo el programa en 3 sectores: Comuna 80 - El Limonar; Comuna 13 - Blanquizal; Comuna 8 - La Sierra", "Medellin", "Medellín", "Medellín y El Retiro", "Medellín y municipios de Antioquia , otras ciudades", "Medellín, Poblado", "Medellín, comuna 13", "Nacional", "Planeta Rica, Córdoba", "Poblado", "Poblado, Medellin", "Rionegro", "SANTA ELENA y Medellín", "San Antonio de Prado", "San Pedro de Uraba Antioquia", "Sna Sebastián de palmitas", "Toda la ciudad de Medellín", "Área Metropolitana Valle de Aburrá"];
+const TODOS_TERRITORIOS = ["Area metropolitana", "BELEN Y DOCE DE OCTUBRE", "Barrio la cruz comuna 3 Medellín", "Belén, Laureles, Moravia, El Poblado", "Betania", "Buenos Aires - Medellín", "Caldas", "Comuna 10", "Comuna 10 - Envigado", "Comuna 10 - La Candelaria", "Comuna 10 - Medellín", "Comuna 10- LA CANDERIA", "Comuna 11", "Comuna 12 ,La America", "Comuna 13", "Comuna 14", "Comuna 14 - Medellín", "Comuna 14, El Poblado", "Comuna 3 Manrique", "Comuna 4", "Comuna 4- Medellín", "Comuna 5", "Comuna 5, castilla", "Comuna 8 y 9 (Villa Hermosa, Buenos Aires) Medellín", "Comuna 9", "Comunas 10, 1, 3, etc", "Comunas 2 y 1, queremos llegar a todo Antioquia", "El Poblado", "El Poblado, Medellín", "En las 16 comunas", "Enviado - Támesis", "Envigado", "Global", "La Honda, Manrique (Comuna 3), Medellin", "Llevamos a cabo el programa en 3 sectores: Comuna 80 - El Limonar; Comuna 13 - Blanquizal; Comuna 8 - La Sierra", "Medellin", "Medellín", "Medellín y El Retiro", "Medellín y municipios de Antioquia , otras ciudades", "Medellín, Poblado", "Medellín, comuna 13", "Nacional", "Planeta Rica, Córdoba", "Poblado", "Poblado Medellín", "Poblado, Medellin", "Rionegro", "SANTA ELENA y Medellín", "San Antonio de Prado", "San Pedro de Uraba Antioquia", "Sna Sebastián de palmitas", "Toda la ciudad de Medellín", "Támesis Antioquia", "Área Metropolitana Valle de Aburrá"];
 
 const BUSCA_OPCIONES = ["Alianzas Estratégicas", "Visibilidad", "Financiación", "Formación", "Mentoría", "Voluntariado"];
 
-const OFRECE_OPCIONES = ["Formación", "Consultoría", "Articulación Territorial", "Facilitación", "Movilización Comunitaria", "Investigación"];
+const OFRECE_OPCIONES = ["Formación", "Consultoría", "Facilitación", "Articulación Territorial", "Movilización Comunitaria", "Investigación"];
 
 const CAPACIDADES_DATA = {
-  labels: ["Formación", "Gestión De Proyectos", "Comunicación", "Arte", "Cultura", "Organización Comunitaria", "Incidencia", "Investigación", "Mediación De Conflictos", "Tecnología"],
-  values: [43, 34, 26, 16, 16, 15, 15, 12, 11, 4]
+  labels: ["Formación", "Gestión De Proyectos", "Comunicación", "Organización Comunitaria", "Arte", "Cultura", "Incidencia", "Investigación", "Mediación De Conflictos", "Tecnología"],
+  values: [48, 37, 28, 16, 16, 16, 16, 13, 12, 6]
 };
 
 const LIDERES = [
@@ -3494,10 +3494,9 @@ const LIDERES = [
       "clara-robledo-moreno-63-2.webp"
     ],
     "causas": [
-      "Ambiente",
       "Educación",
-      "Cultura",
-      "Emprendimiento"
+      "Ambiente",
+      "Cultura"
     ],
     "poblacion": [
       "Comunidad Rural",
@@ -3539,12 +3538,365 @@ const LIDERES = [
       "instagram": "Instagram y Youtube: @LaSavia.Vegetal"
     },
     "foto": "images/lideres/clara-robledo-moreno-63-0-primary.webp"
+  },
+  {
+    "id": "juliana-mejia-pelaez",
+    "numero": "65",
+    "nombre": "Juliana Mejía Peláez",
+    "organizacion": "Independiente",
+    "territorio": "Medellín",
+    "municipio": "Medellín",
+    "fotos": [],
+    "causas": [
+      "Paz"
+    ],
+    "poblacion": [
+      "Niñez",
+      "Juventud",
+      "Mujeres"
+    ],
+    "capacidades": [
+      "Tejer Relaciones Entre Gente Distinta"
+    ],
+    "busca": [
+      "Ampliar La Conciencia Sobre La Realidad Del Otro"
+    ],
+    "ofrece": [
+      "Encuentro",
+      "Escucha",
+      "Conversación"
+    ],
+    "experiencia": 7,
+    "disponible_alianzas": true,
+    "que_hace": "Tejo relaciones entre gente distinta que permitan hacer cosas juntos por la ciudad",
+    "problema": "La no repetición. Creo que la paz no se forma, sino que se teje",
+    "con_quien": "Líderes sociales y ciudadanos interesados en los temas de ciudad",
+    "que_ofrece_largo": "Posibilidades en acercar mundos distintos",
+    "frase_vision": "La paz no se firma, sino que se teje",
+    "alianzas_activas": "",
+    "proyecto_autogestion": "",
+    "contacto": {
+      "email": "jmejia543@gmail.com",
+      "telefono": "+573217354860",
+      "web": null,
+      "instagram": null
+    },
+    "foto": null
+  },
+  {
+    "id": "beatriz-angelica-galeano-almanza",
+    "numero": "66",
+    "nombre": "Beatriz Angélica Galeano Almanza",
+    "organizacion": "Clínica oral concept",
+    "territorio": "Poblado Medellín",
+    "municipio": "Medellín",
+    "fotos": [
+      "beatriz-angelica-galeano-almanza-65-0.webp",
+      "beatriz-angelica-galeano-almanza-65-1.webp",
+      "beatriz-angelica-galeano-almanza-65-2.webp"
+    ],
+    "causas": [
+      "Emprendimiento"
+    ],
+    "poblacion": [
+      "Juventud",
+      "Mujeres"
+    ],
+    "capacidades": [
+      "Gestión De Proyectos",
+      "Comunicación",
+      "Tecnología"
+    ],
+    "busca": [
+      "Mentoría",
+      "Alianzas Estratégicas",
+      "Visibilidad"
+    ],
+    "ofrece": [
+      "Formación"
+    ],
+    "experiencia": 15,
+    "disponible_alianzas": true,
+    "que_hace": "Tengo una clínica odontologica con tres sedes en Medellín y envigado , soy 100% digitalizada. Nuestro propósito es cambiar vidas y sonrisas",
+    "problema": "Todos los pacientes buscan un cambio en su sonrisa mejorar la salud oral y sentirse más seguros al sonreír",
+    "con_quien": "Ninguna población en especial",
+    "que_ofrece_largo": "Servicios de salud oral",
+    "frase_vision": "Nuestro objetivo es seguir impactando más vidas",
+    "alianzas_activas": "",
+    "proyecto_autogestion": "Si",
+    "contacto": {
+      "email": "beatriz.galeano.almanza@gmail.com",
+      "telefono": "+573137662008",
+      "web": null,
+      "instagram": null
+    },
+    "foto": "images/lideres/beatriz-angelica-galeano-almanza-65-0.webp"
+  },
+  {
+    "id": "juan-manuel-restrepo",
+    "numero": "67",
+    "nombre": "Juan manuel restrepo",
+    "organizacion": "Valor sostenible y empresa privada",
+    "territorio": "Caldas",
+    "municipio": "Caldas",
+    "fotos": [],
+    "causas": [
+      "Educación",
+      "Ambiente",
+      "Emprendimiento",
+      "Participación Ciudadana"
+    ],
+    "poblacion": [
+      "Juventud",
+      "Víctimas",
+      "Campesinado"
+    ],
+    "capacidades": [
+      "Formación",
+      "Gestión De Proyectos",
+      "Produccion"
+    ],
+    "busca": [
+      "Financiación",
+      "Formación",
+      "Alianzas Estratégicas"
+    ],
+    "ofrece": [
+      "Formación",
+      "Movilización Comunitaria",
+      "Facilitación"
+    ],
+    "experiencia": 10,
+    "disponible_alianzas": true,
+    "que_hace": "Impacto social y ambiental en comunidades. Soluciones verdes. Acompañamiento en transformaciones productivas.",
+    "problema": "Movilización, gestion de proyectos",
+    "con_quien": "Gobierno, empresa privada y comunidad.",
+    "que_ofrece_largo": "Capacidades, conocimientos y contactos",
+    "frase_vision": "Ser lider en Colombia en servicios y metodologias sostenibles y de bienestar que generen valor e impacto en la comunidad.",
+    "alianzas_activas": "Gobierno, URT, Comfenalco, Magna",
+    "proyecto_autogestion": "Si, Proyectos de seguridad alimentaria",
+    "contacto": {
+      "email": "Direccion@valorsostenible.org",
+      "telefono": "+573187854331",
+      "web": "Www.valorsostenible.org",
+      "instagram": "https://www.instagram.com/fvalorsostenible"
+    },
+    "foto": null
+  },
+  {
+    "id": "sebastian-restrepo-henao",
+    "numero": "68",
+    "nombre": "Sebastián Restrepo Henao",
+    "organizacion": "Corporación Visión Suroeste",
+    "territorio": "Támesis Antioquia",
+    "municipio": "Tamesis",
+    "fotos": [
+      "sebastian-restrepo-henao-67-0-primary.webp",
+      "sebastian-restrepo-henao-67-1.webp",
+      "sebastian-restrepo-henao-67-2.webp"
+    ],
+    "causas": [
+      "Cultura",
+      "Ambiente",
+      "Emprendimiento",
+      "Participación Ciudadana"
+    ],
+    "poblacion": [
+      "Juventud",
+      "Mujeres",
+      "Personas Mayores",
+      "Comunidades Étnicas",
+      "Campesinado",
+      "Familias"
+    ],
+    "capacidades": [
+      "Formación",
+      "Incidencia",
+      "Investigación",
+      "Mediación De Conflictos"
+    ],
+    "busca": [
+      "Financiación",
+      "Voluntariado",
+      "Alianzas Estratégicas",
+      "Visibilidad"
+    ],
+    "ofrece": [
+      "Formación",
+      "Facilitación",
+      "Articulación Territorial"
+    ],
+    "experiencia": 7,
+    "disponible_alianzas": true,
+    "que_hace": "Soy tejedor eco-social en la bioregión del Cartama, Suroeste de Antioquia desde el movimiento Visión Suroeste. En este territorio sucede uno de los conflictos socioambientales mas relevantes del país, por proyectos de megaminería de metales. Nacimos acompañando la defensa del territorio como una campaña comunicativa alternativa, y pronto entendimos que \"no es suficiente con luchar contra la bestia, sino que hay que cuidar la bella\". Y nos transformamos en un movimiento que cultiva la regeneración social y ecológica en nuestra bioregión a través de narrativas de narrativas y prácticas de cambio hacia una relación con todo lo vivo con lo que compartimos nuestro hogar. Lo hacemos a través de procesos culturales que celebran nuestras cuencas, del tejido de líderes y proyectos que honran lo vivo y transitan hacia formas de producir y habitar que cuidan la vida en todas sus formas. Hacemos ciencia participativa, ritualidad y metodologías de ecología profunda, e incidimos en la gobernanza a través de la participación efectiva y afectiva.",
+    "problema": "Nuestro propósito es transformar la mentalidad extractiva que entiende a nuestra naturaleza, nuestras montañas y cuencas como un recurso a explotar. Nosotros honramos el privilegio y la responsabilidad de habitar en los Andes Tropicales, el hotspot de biodiversidad más importante y amenazado del planeta. Somos diseñadores y movilizadores de un cambio cultural, político y económico necesario en tiempos de una crisis civilizatoria global que se expresa en nuestros territorios en relaciones colonialistas y explotadoras. Y cultivamos una transformación cultural que honre todo lo vivo, de una ética del cuidado, donde podamos vivir, crecer y \"progresar\" reconectados con la abundancia de la vida, desde renovados paradigmas de bienestar.",
+    "con_quien": "Trabajamos con los habitantes humanos y no humanos (montañas y cuencas) en la bioregión del Cartama. Trabajamos con emprededores y líderes rurales, con familias campesinas y neocampesinas (tratamos de integrar la diversidad de edades en nuestros procesos), con resguardos indígenas, con líderes públicos y empresas que creen en nuevas formas de economía y gobernanza. Trabajamos en transformar nuestras relaciones con el suelo, con la siembra, con el agua. Y honramos e incluimos los sitios sagrados: con los sitios sagrados donde comunidades antiguas tallaron los petroglifos en las piedras. Trabajamos y honramos desde el puma, el oso y el agüila real de montaña, hasta los insectos y la vida microscópica que habita en el suelo, nos nutre y alimenta. A todos esos otros los reconocemos y los incluímos.",
+    "que_ofrece_largo": "Comunicación para el cambio social y ecológico, ciencia participativa, arte, cultura y ritualidad. Incidencia en nuevas gobernanzas.",
+    "frase_vision": "vivir para ser un buen ancestro",
+    "alianzas_activas": "Parque Biosuroeste, Fundación Grupo Argos, Ecohome, Alianza FOLU. Convite de ambiente, alianza suroeste, imagina Jericó, etc.",
+    "proyecto_autogestion": "Medellín conectado con la bioregión de la cuenca del Cauca",
+    "contacto": {
+      "email": "eco.sebas@gmail.com",
+      "telefono": "+573116207250",
+      "web": "www.visionsuroeste.com",
+      "instagram": "@visionsuroeste"
+    },
+    "foto": "images/lideres/sebastian-restrepo-henao-67-0-primary.webp"
+  },
+  {
+    "id": "clara-maria-mesa-trujillo",
+    "numero": "69",
+    "nombre": "Clara María Mesa Trujillo",
+    "organizacion": "Consultorio Médico",
+    "territorio": "Comuna 14",
+    "municipio": "Medellín",
+    "fotos": [],
+    "causas": [
+      "Salud Mental",
+      "Educación",
+      "Mujeres"
+    ],
+    "poblacion": [
+      "Niñez",
+      "Juventud",
+      "Mujeres",
+      "Personas Mayores"
+    ],
+    "capacidades": [
+      "Formación",
+      "Médica Medicina Integrativa"
+    ],
+    "busca": [
+      "Voluntariado",
+      "Formación",
+      "Alianzas Estratégicas"
+    ],
+    "ofrece": [
+      "Apoyo En Medicina Integrativa"
+    ],
+    "experiencia": 25,
+    "disponible_alianzas": true,
+    "que_hace": "Soy médica integrativa y funcional, enfoque del paciente tanto de su cuerpo físico como Emocional . Educación en pilares del bienestar como son alimentación, calidad de sueño, movimiento, manejo de emociones , drenaje de estrés y propósito de vida.",
+    "problema": "Orientación médica abarcando la integralidad del ser, desde su parte física y emocional.",
+    "con_quien": "Pacientes y grupos de personas para talleres",
+    "que_ofrece_largo": "Conocimiento",
+    "frase_vision": "Desde el conocimiento se crea el cambio",
+    "alianzas_activas": "",
+    "proyecto_autogestion": "",
+    "contacto": {
+      "email": "claramesat@gmail.com",
+      "telefono": "+573146313603",
+      "web": null,
+      "instagram": null
+    },
+    "foto": null
+  },
+  {
+    "id": "yulian-cristina-botero-bedoya",
+    "numero": "70",
+    "nombre": "Yulian Cristina Botero Bedoya",
+    "organizacion": "Jóvenes talento local",
+    "territorio": "Comuna 9",
+    "municipio": "Medellín",
+    "fotos": [
+      "yulian-cristina-botero-bedoya-69-3.webp",
+      "yulian-cristina-botero-bedoya-69-2-primary.webp",
+      "yulian-cristina-botero-bedoya-69-0.webp"
+    ],
+    "causas": [
+      "Juventud",
+      "Mujeres",
+      "Participación Ciudadana"
+    ],
+    "poblacion": [
+      "Juventud",
+      "Mujeres"
+    ],
+    "capacidades": [
+      "Formación",
+      "Gestión De Proyectos",
+      "Comunicación"
+    ],
+    "busca": [
+      "Voluntariado",
+      "Formación",
+      "Visibilidad"
+    ],
+    "ofrece": [
+      "Formación",
+      "Consultoría",
+      "Facilitación"
+    ],
+    "experiencia": 2,
+    "disponible_alianzas": false,
+    "que_hace": "Lideramos Jóvenes y Mujeres Talento Local, una iniciativa comunitaria orientada a identificar, acompañar, fortalecer y visibilizar los talentos y liderazgos de jóvenes y mujeres de Medellín. Generamos espacios de formación, orientación, mentoría, encuentro y participación, y articulamos oportunidades educativas, institucionales, culturales y sociales que contribuyan al desarrollo de sus capacidades y proyectos de vida.",
+    "problema": "Ayudamos a reducir las brechas de acceso a información, oportunidades, formación, redes de apoyo y escenarios de participación que enfrentan jóvenes y mujeres en los territorios. Buscamos que puedan conocer y aprovechar la oferta institucional y educativa, fortalecer sus capacidades, conectar con otros actores, visibilizar sus talentos y asumir un papel activo como líderes y multiplicadores de oportunidades en sus comunidades.",
+    "con_quien": "Trabajamos principalmente con jóvenes y mujeres de diferentes comunas y corregimientos de Medellín, especialmente personas con interés en fortalecer sus capacidades, continuar sus trayectorias educativas, desarrollar liderazgos, participar en sus comunidades o potenciar sus talentos e iniciativas. También articulamos el proceso con liderazgos comunitarios, organizaciones sociales, instituciones educativas y entidades públicas de la ciudad.",
+    "que_ofrece_largo": "Ofrecemos experiencia en gestión territorial, formación y acompañamiento comunitario, liderazgo, participación ciudadana, orientación a jóvenes y mujeres, formulación de proyectos y articulación interinstitucional. Contamos además con capacidad de convocatoria territorial, conexión con liderazgos y organizaciones comunitarias, generación de espacios de encuentro y formación, y experiencia articulando oportunidades con instituciones de educación superior y entidades públicas. Nuestro principal valor es la posibilidad de conectar las oportunidades de los aliados con personas y procesos reales en los territorios de Medellín.",
+    "frase_vision": "Ser una red referente en Medellín que conecta, potencia y visibiliza el talento de jóvenes y mujeres, transformando sus capacidades en oportunidades, liderazgo e impacto para sus territorios.",
+    "alianzas_activas": "",
+    "proyecto_autogestion": "Sí. Me gustaría impulsar un Laboratorio de Talentos y Oportunidades para Medellín, un proyecto colaborativo que conecte a jóvenes y mujeres de distintos territorios con personas mentoras, organizaciones, empresas e instituciones que puedan fortalecer sus capacidades y convertir sus ideas en proyectos concretos de impacto para la ciudad. La propuesta combinaría encuentros territoriales, formación práctica, mentorías, retos de ciudad y acompañamiento para diseñar y poner en marcha pequeñas iniciativas comunitarias, sociales, culturales o productivas. Más que crear una nueva oferta aislada, buscaría conectar talentos que ya existen con oportunidades, conocimiento y redes que muchas veces no llegan hasta los territorios. Me gustaría desarrollarlo con integrantes de CienPorCien que tengan experiencia en educación, innovación, emprendimiento, cultura, comunicaciones, gestión social, sector empresarial, academia y trabajo comunitario. Considero que sería un equipo ideal porque permitiría sumar capacidades diversas: quienes conocen los territorios y sus necesidades, quienes pueden aportar conocimiento técnico, quienes conectan con oportunidades y recursos, y quienes tienen capacidad para comunicar, movilizar y hacer visibles las iniciativas. El propósito sería muy concreto: hacer que las conexiones de CienPorCien se conviertan en oportunidades reales y proyectos colectivos que transformen Medellín desde el talento de su gente.",
+    "contacto": {
+      "email": "Boterobedoyacristina@gmail.com",
+      "telefono": "+573174049686",
+      "web": null,
+      "instagram": "@boterobedoyacristina"
+    },
+    "foto": "images/lideres/yulian-cristina-botero-bedoya-69-3.webp"
+  },
+  {
+    "id": "denis-eugenia-sepulveda-aguirre",
+    "numero": "71",
+    "nombre": "Denis Eugenia Sepúlveda Aguirre",
+    "organizacion": "N/A",
+    "territorio": "Betania",
+    "municipio": "Medellín",
+    "fotos": [
+      "denis-eugenia-sepulveda-aguirre-70-0-primary.webp"
+    ],
+    "causas": [
+      "Mujeres",
+      "Ambiente"
+    ],
+    "poblacion": [
+      "Mujeres"
+    ],
+    "capacidades": [
+      "Formación",
+      "Organización Comunitaria",
+      "Tecnología"
+    ],
+    "busca": [
+      "Voluntariado",
+      "Formación",
+      "Alianzas Estratégicas"
+    ],
+    "ofrece": [
+      "Formación",
+      "Facilitación"
+    ],
+    "experiencia": 2,
+    "disponible_alianzas": true,
+    "que_hace": "Apoyo a pequeñas y medianas empresas a organizar y mejorar sus procesos para que trabajen de manera más eficiente.",
+    "problema": "Ayudo a las pymes a ahorrar tiempo, reducir tareas innecesarias y mejorar su productividad.",
+    "con_quien": "Trabajo con emprendedores y pymes, especialmente negocios que necesitan organizar mejor su tiempo y procesos.",
+    "que_ofrece_largo": "Conocimiento en organización, optimización de procesos y acompañamiento para implementar soluciones prácticas que generen resultados.",
+    "frase_vision": "Un futuro donde las pymes trabajen de forma más inteligente, aprovechen mejor su tiempo y crezcan de manera sostenible.",
+    "alianzas_activas": "Actualmente no cuento con alianzas activas, pero estoy abierto/a a construir colaboraciones estratégicas.",
+    "proyecto_autogestion": "Un programa de acompañamiento para pymes de Medellín que les ayude a optimizar procesos, ahorrar tiempo y mejorar su productividad mediante herramientas prácticas y accesibles. Con integrantes de CienPorCien con experiencia en emprendimiento, tecnología, gestión empresarial y formación. Sería un equipo complementario para convertir conocimientos en soluciones concretas para las pymes.",
+    "contacto": {
+      "email": "denisep502@gmail.com",
+      "telefono": "+573012829705",
+      "web": null,
+      "instagram": null
+    },
+    "foto": "images/lideres/denis-eugenia-sepulveda-aguirre-70-0-primary.webp"
   }
 ];
 
 const STATS = {
-  total: 64,
-  territorios: 49,
+  total: 71,
+  territorios: 54,
   causas: 10,
-  disponibles: 64
+  disponibles: 70
 };
