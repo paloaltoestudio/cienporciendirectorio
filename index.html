@@ -285,8 +285,7 @@
   <div class="hero-inner">
     <div class="hero-text">
       <h1 class="hero-h1">Directorio<br>Estratégico de<br><em>Liderazgos</em></h1>
-      <p class="hero-lead" id="hero-lead">Líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.</p>
-      <p class="hero-quote">"Detrás de cada territorio hay personas que están construyendo soluciones. Este directorio existe para encontrarlas."</p>
+      <p class="hero-lead" id="hero-lead">En cada territorio hay personas que están construyendo soluciones. Este Directorio de Liderazgos existe para encontrarlas, y para reconocer, conectar y activar una red que multiplica bienestar en Medellín.</p>
       <div class="hero-ctas">
         <a href="directorio.html" class="btn-primary">Explorar el directorio →</a>
         <a href="visualizaciones.html" class="btn-secondary">Ver visualizaciones</a>
@@ -412,16 +411,12 @@
 <script src="data.js"></script>
 <script src="common.js"></script>
 <script>
-  document.getElementById('hero-lead').textContent =
-    `${STATS.total} líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.`;
   document.getElementById('qf-causa-desc').textContent =
-    `${TODAS_CAUSAS.slice(0,4).join(', ')} y ${Math.max(TODAS_CAUSAS.length - 4, 0)} causas más.`;
+    `${TODAS_CAUSAS.slice(0,4).join(', ')} y otras causas más.`;
 
   // ── STATS STRIP ──
   const statsData = [
-    [STATS.total, 'Líderes registrados'],
     [STATS.territorios, 'Territorios representados'],
-    [STATS.causas, 'Causas transformadoras'],
     [STATS.disponibles, 'Disponibles para alianzas'],
   ];
   document.getElementById('stats-inner').innerHTML = statsData.map(([num, label]) => `

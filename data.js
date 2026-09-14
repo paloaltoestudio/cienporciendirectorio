@@ -106,6 +106,7 @@ const LIDERES = [
     "organizacion": "Conexiones Jurídicas - SENA",
     "territorio": "Buenos Aires - Medellín",
     "municipio": "Medellín",
+    "zonas": ["Comuna 9 (Buenos Aires)"],
     "fotos": [
       "jorge-david-vallejo-gomez-00-0-primary.webp",
       "jorge-david-vallejo-gomez-00-1.webp"
@@ -149,6 +150,7 @@ const LIDERES = [
     "organizacion": "SOMOS B+E",
     "territorio": "SANTA ELENA y Medellín",
     "municipio": "Medellín",
+    "zonas": ["Santa Elena"],
     "fotos": [
       "maria-paula-salazar-benavides-01-1.webp",
       "maria-paula-salazar-benavides-01-3.webp",
@@ -203,6 +205,7 @@ const LIDERES = [
     "organizacion": "RED La Cruz",
     "territorio": "Barrio la cruz comuna 3 Medellín",
     "municipio": "Medellín",
+    "zonas": ["Comuna 3 (Manrique)"],
     "fotos": [
       "yesid-alexander-sanchez-perez-02-1-primary.webp",
       "yesid-alexander-sanchez-perez-02-0.webp",
@@ -259,6 +262,7 @@ const LIDERES = [
     "organizacion": "Emisora Tropicana",
     "territorio": "Comuna 11",
     "municipio": "Medellín",
+    "zonas": ["Comuna 11 (Laureles-Estadio)"],
     "fotos": [
       "karina-uribe-03-0.webp",
       "karina-uribe-03-2.webp",
@@ -304,6 +308,7 @@ const LIDERES = [
     "organizacion": "Taller sin Borde",
     "territorio": "Medellín y El Retiro",
     "municipio": "Retiro",
+    "zonas": ["Retiro"],
     "fotos": [
       "ana-maria-jimenez-04-0.webp",
       "ana-maria-jimenez-04-1.webp",
@@ -359,6 +364,7 @@ const LIDERES = [
     "organizacion": "SENTIPENSANTES (PROYECTO PROPIO)",
     "territorio": "BELEN Y DOCE DE OCTUBRE",
     "municipio": "Medellín",
+    "zonas": ["Comuna 16 (Belén)", "Comuna 6 (Doce de Octubre)"],
     "fotos": [
       "maria-camila-correa-aguilar-05-2-primary.webp",
       "maria-camila-correa-aguilar-05-3.webp",
@@ -417,6 +423,7 @@ const LIDERES = [
     "organizacion": "PIANOACADEMY corporación",
     "territorio": "Poblado",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "natalia-ramirez-diaz-06-0-primary.webp",
       "natalia-ramirez-diaz-06-1.webp",
@@ -472,6 +479,7 @@ const LIDERES = [
     "organizacion": "Medellin te Quiere Saludable de la Secretaria de Salud",
     "territorio": "Comuna 4",
     "municipio": "Medellín",
+    "zonas": ["Comuna 4 (Aranjuez)"],
     "fotos": [
       "catalina-benitez-lora-07-0.webp",
       "catalina-benitez-lora-07-1.webp",
@@ -526,6 +534,7 @@ const LIDERES = [
     "organizacion": "Soy Mentora y emprendedora",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "isabel-cristina-sanchez-uribe-08-0-primary.webp",
       "isabel-cristina-sanchez-uribe-08-1.webp",
@@ -585,6 +594,7 @@ const LIDERES = [
     "organizacion": "Fundación Montesser",
     "territorio": "Rionegro",
     "municipio": "Rionegro",
+    "zonas": ["Rionegro"],
     "fotos": [
       "pamela-moreno-09-0-primary.webp",
       "pamela-moreno-09-1.webp",
@@ -634,6 +644,7 @@ const LIDERES = [
     "organizacion": "2uno3",
     "territorio": "Medellin",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "maria-virginia-osorio-cabrera-10-3-primary.webp",
       "maria-virginia-osorio-cabrera-10-0.webp",
@@ -685,6 +696,7 @@ const LIDERES = [
     "organizacion": "Niño Mágico S.A.S. BIC - Corazón de Niño",
     "territorio": "Comuna 10 - Envigado",
     "municipio": "Envigado",
+    "zonas": ["Envigado"],
     "fotos": [
       "jorge-ivan-giraldo-giraldo-11-0-primary.webp",
       "jorge-ivan-giraldo-giraldo-11-1.webp",
@@ -740,6 +752,7 @@ const LIDERES = [
     "organizacion": "SENA",
     "territorio": "El Poblado",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "brodny-yessid-herrera-lopez-12-0-primary.webp",
       "brodny-yessid-herrera-lopez-12-1.webp",
@@ -802,6 +815,7 @@ const LIDERES = [
     "organizacion": "Luisa Crea Impacto- Museo pedro Nel Gómez",
     "territorio": "Comuna 4- Medellín",
     "municipio": "Medellín",
+    "zonas": ["Comuna 4 (Aranjuez)"],
     "fotos": [
       "luisa-fernanda-bolivar-henao-13-0.webp",
       "luisa-fernanda-bolivar-henao-13-1.webp",
@@ -858,6 +872,7 @@ const LIDERES = [
     "organizacion": "Flor de loto",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "lizeth-andrea-paniagua-saldarriaga-14-2-primary.webp",
       "lizeth-andrea-paniagua-saldarriaga-14-0.webp",
@@ -909,6 +924,7 @@ const LIDERES = [
     "organizacion": "Caballito de mar",
     "territorio": "Comuna 5",
     "municipio": "Medellín",
+    "zonas": ["Comuna 5 (Castilla)"],
     "fotos": [
       "andres-mauricio-marin-correa-15-0-primary.webp",
       "andres-mauricio-marin-correa-15-1.webp",
@@ -965,6 +981,7 @@ const LIDERES = [
     "organizacion": "Conecta, desde donde lidero el podcast Conecta y la comunidad Conecta Mujeres. Además, participo en procesos comunitarios en el barrio Patio Bonito (El Poblado)",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "catalina-isabel-ortiz-rodriguez-16-1.webp",
       "catalina-isabel-ortiz-rodriguez-16-0.webp"
@@ -1016,6 +1033,7 @@ const LIDERES = [
     "organizacion": "Casa del Teatro biblioteca Gilberto Martínez",
     "territorio": "Comuna 12 ,La America",
     "municipio": "Medellín",
+    "zonas": ["Comuna 12 (La América)"],
     "fotos": [
       "natalia-andrea-cardenas-arango-17-0.webp",
       "natalia-andrea-cardenas-arango-17-2.webp",
@@ -1071,6 +1089,7 @@ const LIDERES = [
     "organizacion": "Canas al aire, INDER DE MEDELLIN, adultos. Mayores/",
     "territorio": "Comuna 3 Manrique",
     "municipio": "Medellín",
+    "zonas": ["Comuna 3 (Manrique)"],
     "fotos": [
       "monica-arango-gomez-18-0.webp",
       "monica-arango-gomez-18-2.webp",
@@ -1125,6 +1144,7 @@ const LIDERES = [
     "organizacion": "Abogada independiente defensora y representante de mujeres víctimas de mujeres VBG",
     "territorio": "Comunas 10, 1, 3, etc",
     "municipio": "Medellín",
+    "zonas": ["Comuna 10 (La Candelaria)", "Comuna 1 (Popular)", "Comuna 3 (Manrique)"],
     "fotos": [
       "natalia-zuluaga-19-4-primary.webp",
       "natalia-zuluaga-19-2.webp",
@@ -1180,6 +1200,7 @@ const LIDERES = [
     "organizacion": "La Provincia",
     "territorio": "Medellín, Poblado",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "miguel-angel-suaza-alarcon-20-0.webp",
       "miguel-angel-suaza-alarcon-20-1.webp"
@@ -1231,6 +1252,7 @@ const LIDERES = [
     "organizacion": "Independiente",
     "territorio": "Envigado",
     "municipio": "Envigado",
+    "zonas": ["Envigado"],
     "fotos": [
       "paula-andrea-lopez-valencia-21-0-primary.webp",
       "paula-andrea-lopez-valencia-21-1.webp",
@@ -1285,6 +1307,7 @@ const LIDERES = [
     "organizacion": "PMO Antioquia",
     "territorio": "Comuna 5, castilla",
     "municipio": "Medellín",
+    "zonas": ["Comuna 5 (Castilla)"],
     "fotos": [
       "mateo-munoz-campo-22-0.webp",
       "mateo-munoz-campo-22-1.webp",
@@ -1338,6 +1361,7 @@ const LIDERES = [
     "organizacion": "Club deportivo formas intimas",
     "territorio": "Comuna 13",
     "municipio": "Medellín",
+    "zonas": ["Comuna 13 (San Javier)"],
     "fotos": [
       "liliana-maria-zapata-sierra-23-0-primary.webp",
       "liliana-maria-zapata-sierra-23-1.webp",
@@ -1389,6 +1413,7 @@ const LIDERES = [
     "organizacion": "Fundación Atman Yoga e In Sight EAFIT",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "erika-klinkert-24-0-primary.webp",
       "erika-klinkert-24-1.webp",
@@ -1440,6 +1465,7 @@ const LIDERES = [
     "organizacion": "Parches pa Movernos",
     "territorio": "Medellin",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "jorge-andres-guerra-velez-25-1-primary.webp",
       "jorge-andres-guerra-velez-25-0.webp",
@@ -1494,6 +1520,7 @@ const LIDERES = [
     "organizacion": "Fundación Raton de BIblioteca",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "sandra-zuluaga-26-1-primary.webp",
       "sandra-zuluaga-26-0.webp",
@@ -1547,6 +1574,7 @@ const LIDERES = [
     "organizacion": "Putamente Poderosas",
     "territorio": "Comuna 10",
     "municipio": "Medellín",
+    "zonas": ["Comuna 10 (La Candelaria)"],
     "fotos": [
       "melissa-toro-nieto-27-2-primary.webp",
       "melissa-toro-nieto-27-0.webp",
@@ -1603,6 +1631,7 @@ const LIDERES = [
     "organizacion": "Marca pesonal: Comunicacion en conexion - Human Partner - Medellín -",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "sandra-patricia-orozco-montoya-28-0-primary.webp",
       "sandra-patricia-orozco-montoya-28-1.webp",
@@ -1657,6 +1686,7 @@ const LIDERES = [
     "organizacion": "Coporación Manguala",
     "territorio": "San Antonio de Prado",
     "municipio": "Medellín",
+    "zonas": ["San Antonio de Prado"],
     "fotos": [
       "jose-monsalve-lopez-29-1-primary.webp",
       "jose-monsalve-lopez-29-0.webp",
@@ -1712,6 +1742,7 @@ const LIDERES = [
     "organizacion": "Fundación Centro de Fe y Culturas",
     "territorio": "Comuna 14",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "johan-esteban-sierra-aguirre-30-0-primary.webp",
       "johan-esteban-sierra-aguirre-30-1.webp",
@@ -1768,6 +1799,7 @@ const LIDERES = [
     "organizacion": "Fundación Prolírica de Antioquia",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "gisela-zivic-31-2.webp",
       "gisela-zivic-31-0.webp",
@@ -1820,6 +1852,7 @@ const LIDERES = [
     "organizacion": "Fundación ARM",
     "territorio": "Global",
     "municipio": "Medellín",
+    "zonas": ["Comuna 1 (Popular)", "Comuna 2 (Santa Cruz)", "Comuna 3 (Manrique)", "Comuna 4 (Aranjuez)", "Comuna 5 (Castilla)", "Comuna 6 (Doce de Octubre)", "Comuna 7 (Robledo)", "Comuna 8 (Villa Hermosa)", "Comuna 9 (Buenos Aires)", "Comuna 10 (La Candelaria)", "Comuna 11 (Laureles-Estadio)", "Comuna 12 (La América)", "Comuna 13 (San Javier)", "Comuna 14 (El Poblado)", "Comuna 15 (Guayabal)", "Comuna 16 (Belén)", "San Sebastián de Palmitas", "San Cristóbal", "Altavista", "San Antonio de Prado", "Santa Elena", "Barbosa", "Girardota", "Copacabana", "Bello", "Medellín", "Envigado", "Itagüí", "Sabaneta", "La Estrella", "Caldas"],
     "fotos": [
       "gina-damato-32-0-primary.webp",
       "gina-damato-32-1.webp"
@@ -1873,6 +1906,7 @@ const LIDERES = [
     "organizacion": "Mujeres que Progresan Fundación",
     "territorio": "Comunas 2 y 1, queremos llegar a todo Antioquia",
     "municipio": "Medellín",
+    "zonas": ["Comuna 1 (Popular)", "Comuna 2 (Santa Cruz)"],
     "fotos": [
       "tatiana-serna-castrillon-33-3-primary.webp",
       "tatiana-serna-castrillon-33-0.webp",
@@ -1938,6 +1972,7 @@ const LIDERES = [
     "organizacion": "Corporación Somos Por Naturaleza",
     "territorio": "La Honda, Manrique (Comuna 3), Medellin",
     "municipio": "Medellín",
+    "zonas": ["Comuna 3 (Manrique)"],
     "fotos": [
       "laura-maya-restrepo-34-0.webp",
       "laura-maya-restrepo-34-1.webp",
@@ -1998,6 +2033,7 @@ const LIDERES = [
     "organizacion": "Reserva Manakai",
     "territorio": "Planeta Rica, Córdoba",
     "municipio": "Planeta Rica",
+    "zonas": ["Planeta Rica (Córdoba)"],
     "fotos": [
       "catalina-mejia-35-0-primary.webp",
       "catalina-mejia-35-1.webp",
@@ -2050,6 +2086,7 @@ const LIDERES = [
     "organizacion": "Grupo Cotrading",
     "territorio": "Comuna 14",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "david-alzate-henao-36-0-primary.webp",
       "david-alzate-henao-36-1.webp",
@@ -2104,6 +2141,7 @@ const LIDERES = [
     "organizacion": "Independiente",
     "territorio": "Comuna 14 - Medellín",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "laura-vasquez-37-1-primary.webp",
       "laura-vasquez-37-0.webp",
@@ -2157,6 +2195,7 @@ const LIDERES = [
     "organizacion": "Fundación Juanfe",
     "territorio": "Comuna 10 - Medellín",
     "municipio": "Medellín",
+    "zonas": ["Comuna 10 (La Candelaria)"],
     "fotos": [
       "carolina-jimenez-gonzalez-38-2-primary.webp",
       "carolina-jimenez-gonzalez-38-0.webp",
@@ -2208,6 +2247,7 @@ const LIDERES = [
     "organizacion": "Fundación Solidaridad Sin Límites",
     "territorio": "Nacional",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "paula-andrea-roldan-39-0.webp",
       "paula-andrea-roldan-39-1.webp",
@@ -2262,6 +2302,7 @@ const LIDERES = [
     "organizacion": "Convite de Ambiente",
     "territorio": "Belén, Laureles, Moravia, El Poblado",
     "municipio": "Medellín",
+    "zonas": ["Comuna 16 (Belén)", "Comuna 11 (Laureles-Estadio)", "Comuna 4 (Aranjuez)", "Comuna 14 (El Poblado)"],
     "fotos": [
       "camilo-quintero-giraldo-40-0-primary.webp",
       "camilo-quintero-giraldo-40-1.webp",
@@ -2316,6 +2357,7 @@ const LIDERES = [
     "organizacion": "Abogada litigante independiente",
     "territorio": "En las 16 comunas",
     "municipio": "Medellín",
+    "zonas": ["Comuna 1 (Popular)", "Comuna 2 (Santa Cruz)", "Comuna 3 (Manrique)", "Comuna 4 (Aranjuez)", "Comuna 5 (Castilla)", "Comuna 6 (Doce de Octubre)", "Comuna 7 (Robledo)", "Comuna 8 (Villa Hermosa)", "Comuna 9 (Buenos Aires)", "Comuna 10 (La Candelaria)", "Comuna 11 (Laureles-Estadio)", "Comuna 12 (La América)", "Comuna 13 (San Javier)", "Comuna 14 (El Poblado)", "Comuna 15 (Guayabal)", "Comuna 16 (Belén)"],
     "fotos": [
       "natalia-zuluaga-2-41-1-primary.webp",
       "natalia-zuluaga-2-41-0.webp",
@@ -2376,6 +2418,7 @@ const LIDERES = [
     "organizacion": "EL COLEGIO COLEGIATURA",
     "territorio": "El Poblado, Medellín",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "patricia-buelvas-perez-42-0-primary.webp",
       "patricia-buelvas-perez-42-1.webp",
@@ -2427,6 +2470,7 @@ const LIDERES = [
     "organizacion": "Colegiatura Colombiana",
     "territorio": "El Poblado",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "johan-bueno-madrid-43-0.webp",
       "johan-bueno-madrid-43-1.webp",
@@ -2479,6 +2523,7 @@ const LIDERES = [
     "organizacion": "Consultora sector cultural",
     "territorio": "Área Metropolitana Valle de Aburrá",
     "municipio": "Medellín",
+    "zonas": ["Comuna 1 (Popular)", "Comuna 2 (Santa Cruz)", "Comuna 3 (Manrique)", "Comuna 4 (Aranjuez)", "Comuna 5 (Castilla)", "Comuna 6 (Doce de Octubre)", "Comuna 7 (Robledo)", "Comuna 8 (Villa Hermosa)", "Comuna 9 (Buenos Aires)", "Comuna 10 (La Candelaria)", "Comuna 11 (Laureles-Estadio)", "Comuna 12 (La América)", "Comuna 13 (San Javier)", "Comuna 14 (El Poblado)", "Comuna 15 (Guayabal)", "Comuna 16 (Belén)", "San Sebastián de Palmitas", "San Cristóbal", "Altavista", "San Antonio de Prado", "Santa Elena", "Barbosa", "Girardota", "Copacabana", "Bello", "Medellín", "Envigado", "Itagüí", "Sabaneta", "La Estrella", "Caldas"],
     "fotos": [
       "silvana-tobon-cardona-44-0-primary.webp",
       "silvana-tobon-cardona-44-2.webp",
@@ -2545,6 +2590,7 @@ const LIDERES = [
     "organizacion": "Manuela Tejada Comunicaciones",
     "territorio": "Comuna 14, El Poblado",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "manuela-tejada-agudelo-45-0-primary.webp",
       "manuela-tejada-agudelo-45-1.webp",
@@ -2603,6 +2649,7 @@ const LIDERES = [
     "organizacion": "Proyecto Caliandra",
     "territorio": "Enviado - Támesis",
     "municipio": "Tamesis",
+    "zonas": ["Támesis"],
     "fotos": [
       "andrea-jaramillo-ramirez-46-0-primary.webp"
     ],
@@ -2655,6 +2702,7 @@ const LIDERES = [
     "organizacion": "Organización social PRESENCIA Colombo Suiza, Programa La Bellota",
     "territorio": "Llevamos a cabo el programa en 3 sectores: Comuna 80 - El Limonar; Comuna 13 - Blanquizal; Comuna 8 - La Sierra",
     "municipio": "Medellín",
+    "zonas": ["Comuna 13 (San Javier)", "Comuna 8 (Villa Hermosa)"],
     "fotos": [
       "luna-marcela-osorio-villada-47-0.webp",
       "luna-marcela-osorio-villada-47-1.webp",
@@ -2708,6 +2756,7 @@ const LIDERES = [
     "organizacion": "El llamado",
     "territorio": "Sna Sebastián de palmitas",
     "municipio": "Medellín",
+    "zonas": ["San Sebastián de Palmitas"],
     "fotos": [
       "wayra-azul-acurio-48-0.webp",
       "wayra-azul-acurio-48-1.webp",
@@ -2757,6 +2806,7 @@ const LIDERES = [
     "organizacion": "Alcaldía de Medellín - Parceros Creadores",
     "territorio": "Toda la ciudad de Medellín",
     "municipio": "Medellín",
+    "zonas": ["Comuna 1 (Popular)", "Comuna 2 (Santa Cruz)", "Comuna 3 (Manrique)", "Comuna 4 (Aranjuez)", "Comuna 5 (Castilla)", "Comuna 6 (Doce de Octubre)", "Comuna 7 (Robledo)", "Comuna 8 (Villa Hermosa)", "Comuna 9 (Buenos Aires)", "Comuna 10 (La Candelaria)", "Comuna 11 (Laureles-Estadio)", "Comuna 12 (La América)", "Comuna 13 (San Javier)", "Comuna 14 (El Poblado)", "Comuna 15 (Guayabal)", "Comuna 16 (Belén)", "San Sebastián de Palmitas", "San Cristóbal", "Altavista", "San Antonio de Prado", "Santa Elena"],
     "fotos": [
       "manuela-cifuentes-de-los-rios-49-2.webp",
       "manuela-cifuentes-de-los-rios-49-0.webp",
@@ -2811,6 +2861,7 @@ const LIDERES = [
     "organizacion": "Organziaciones sociales",
     "territorio": "Comuna 8 y 9 (Villa Hermosa, Buenos Aires) Medellín",
     "municipio": "Medellín",
+    "zonas": ["Comuna 8 (Villa Hermosa)", "Comuna 9 (Buenos Aires)"],
     "fotos": [
       "juan-sebastian-aguirre-echavarria-50-0-primary.webp",
       "juan-sebastian-aguirre-echavarria-50-1.webp",
@@ -2866,6 +2917,7 @@ const LIDERES = [
     "organizacion": "Comfama",
     "territorio": "Poblado",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "melissa-cardona-sanchez-lideres-melissa-cardona-3-primary.webp",
       "melissa-cardona-sanchez-lideres-melissa-cardona-2.webp",
@@ -2915,6 +2967,7 @@ const LIDERES = [
     "organizacion": "Grupo Scout Primero UdeA",
     "territorio": "Comuna 4",
     "municipio": "Medellín",
+    "zonas": ["Comuna 4 (Aranjuez)"],
     "fotos": [
       "doris-elena-ospina-munoz-52-0.webp",
       "doris-elena-ospina-munoz-52-1.webp",
@@ -2966,6 +3019,7 @@ const LIDERES = [
     "organizacion": "Fundación Juanfe",
     "territorio": "Comuna 10 - La Candelaria",
     "municipio": "Medellín",
+    "zonas": ["Comuna 10 (La Candelaria)"],
     "fotos": [
       "sara-gallego-guarin-53-0.webp",
       "sara-gallego-guarin-53-1.webp",
@@ -3016,6 +3070,7 @@ const LIDERES = [
     "organizacion": "Solidaridad sin límites",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "adriana-elizabeth-acosta-orozco-54-2-primary.webp",
       "adriana-elizabeth-acosta-orozco-54-1.webp",
@@ -3066,6 +3121,7 @@ const LIDERES = [
     "organizacion": "Tenemos que hablar",
     "territorio": "Poblado, Medellin",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "daniel-restrepo-55-0.webp"
     ],
@@ -3115,6 +3171,7 @@ const LIDERES = [
     "organizacion": "Magna Comunicaciones",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "lilliana-sierra-martinez-56-0-primary.webp",
       "lilliana-sierra-martinez-56-1.webp",
@@ -3169,6 +3226,7 @@ const LIDERES = [
     "organizacion": "Independiente",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "stephany-ceballos-diez-lideres-stephany-ceballos-diez-primary.webp",
       "stephany-ceballos-diez-lideres-stephany-ceballos-diez.webp"
@@ -3221,6 +3279,7 @@ const LIDERES = [
     "organizacion": "Trabajadora social ESE Hospital Oscar Emiro Vergara Cruz",
     "territorio": "San Pedro de Uraba Antioquia",
     "municipio": "San Pedro De Uraba",
+    "zonas": ["San Pedro de Urabá"],
     "fotos": [],
     "causas": [
       "Salud Mental",
@@ -3274,6 +3333,7 @@ const LIDERES = [
     "organizacion": "Actualmente no pertenezco a ningún proceso.",
     "territorio": "Medellín, comuna 13",
     "municipio": "Medellín",
+    "zonas": ["Comuna 13 (San Javier)"],
     "fotos": [],
     "causas": [
       "Salud Mental",
@@ -3323,6 +3383,7 @@ const LIDERES = [
     "organizacion": "Antioquia Scout",
     "territorio": "Area metropolitana",
     "municipio": "Medellín",
+    "zonas": ["Comuna 1 (Popular)", "Comuna 2 (Santa Cruz)", "Comuna 3 (Manrique)", "Comuna 4 (Aranjuez)", "Comuna 5 (Castilla)", "Comuna 6 (Doce de Octubre)", "Comuna 7 (Robledo)", "Comuna 8 (Villa Hermosa)", "Comuna 9 (Buenos Aires)", "Comuna 10 (La Candelaria)", "Comuna 11 (Laureles-Estadio)", "Comuna 12 (La América)", "Comuna 13 (San Javier)", "Comuna 14 (El Poblado)", "Comuna 15 (Guayabal)", "Comuna 16 (Belén)", "San Sebastián de Palmitas", "San Cristóbal", "Altavista", "San Antonio de Prado", "Santa Elena", "Barbosa", "Girardota", "Copacabana", "Bello", "Medellín", "Envigado", "Itagüí", "Sabaneta", "La Estrella", "Caldas"],
     "fotos": [
       "paola-andrea-perez-velasquez-60-0.webp",
       "paola-andrea-perez-velasquez-60-1.webp",
@@ -3384,6 +3445,7 @@ const LIDERES = [
     "organizacion": "Primero La Gente",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "anderson-david-perez-mesa-61-0-primary.webp",
       "anderson-david-perez-mesa-61-1.webp",
@@ -3437,6 +3499,7 @@ const LIDERES = [
     "organizacion": "Federación Nacional de Representantes Estudiantiles (FENARES).",
     "territorio": "Comuna 10- LA CANDERIA",
     "municipio": "Medellín",
+    "zonas": ["Comuna 10 (La Candelaria)"],
     "fotos": [
       "david-alejandro-ganan-gonzalez-62-0-primary.webp",
       "david-alejandro-ganan-gonzalez-62-1.webp",
@@ -3488,6 +3551,7 @@ const LIDERES = [
     "organizacion": "LaSavia · Laboratorio Botánico",
     "territorio": "Medellín y municipios de Antioquia , otras ciudades",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [
       "clara-robledo-moreno-63-0-primary.webp",
       "clara-robledo-moreno-63-1.webp",
@@ -3546,6 +3610,7 @@ const LIDERES = [
     "organizacion": "Independiente",
     "territorio": "Medellín",
     "municipio": "Medellín",
+    "zonas": ["Medellín"],
     "fotos": [],
     "causas": [
       "Paz"
@@ -3590,6 +3655,7 @@ const LIDERES = [
     "organizacion": "Clínica oral concept",
     "territorio": "Poblado Medellín",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [
       "beatriz-angelica-galeano-almanza-65-0.webp",
       "beatriz-angelica-galeano-almanza-65-1.webp",
@@ -3639,6 +3705,7 @@ const LIDERES = [
     "organizacion": "Valor sostenible y empresa privada",
     "territorio": "Caldas",
     "municipio": "Caldas",
+    "zonas": ["Caldas"],
     "fotos": [],
     "causas": [
       "Educación",
@@ -3690,6 +3757,7 @@ const LIDERES = [
     "organizacion": "Corporación Visión Suroeste",
     "territorio": "Támesis Antioquia",
     "municipio": "Tamesis",
+    "zonas": ["Támesis"],
     "fotos": [
       "sebastian-restrepo-henao-67-0-primary.webp",
       "sebastian-restrepo-henao-67-1.webp",
@@ -3750,6 +3818,7 @@ const LIDERES = [
     "organizacion": "Consultorio Médico",
     "territorio": "Comuna 14",
     "municipio": "Medellín",
+    "zonas": ["Comuna 14 (El Poblado)"],
     "fotos": [],
     "causas": [
       "Salud Mental",
@@ -3798,6 +3867,7 @@ const LIDERES = [
     "organizacion": "Jóvenes talento local",
     "territorio": "Comuna 9",
     "municipio": "Medellín",
+    "zonas": ["Comuna 9 (Buenos Aires)"],
     "fotos": [
       "yulian-cristina-botero-bedoya-69-3.webp",
       "yulian-cristina-botero-bedoya-69-2-primary.webp",
@@ -3851,6 +3921,7 @@ const LIDERES = [
     "organizacion": "N/A",
     "territorio": "Betania",
     "municipio": "Medellín",
+    "zonas": ["Comuna 16 (Belén)"],
     "fotos": [
       "denis-eugenia-sepulveda-aguirre-70-0-primary.webp"
     ],

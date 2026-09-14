@@ -233,7 +233,7 @@
 <div class="page-header">
   <div class="page-header-inner">
     <p class="page-eyebrow" id="page-eyebrow">Perfiles · Medellín 2026</p>
-    <h1 class="page-h1">El <em>Directorio</em></h1>
+    <h1 class="page-h1">Directorio de <em>Liderazgos</em></h1>
     <p class="page-sub" id="page-sub">Usa los filtros para encontrar exactamente lo que necesitas.</p>
   </div>
 </div>
@@ -252,8 +252,8 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
       <input type="text" class="search-input" id="search-input" placeholder="Nombre, organización, territorio…">
     </div>
-    <select class="filter-select" id="filter-territorio">
-      <option value="">Territorio</option>
+    <select class="filter-select" id="filter-zona">
+      <option value="">Comuna / Municipio</option>
     </select>
     <select class="filter-select" id="filter-busca">
       <option value="">¿Qué buscan?</option>
@@ -261,7 +261,7 @@
     <select class="filter-select" id="filter-ofrece">
       <option value="">¿Qué ofrecen?</option>
     </select>
-    <select class="filter-select" id="filter-alianza">
+    <select class="filter-select" id="filter-alianza" style="display:none">
       <option value="">Disponibilidad</option>
       <option value="si">Disponibles para alianzas</option>
     </select>
@@ -298,20 +298,47 @@
 <script src="data.js"></script>
 <script src="common.js"></script>
 <script>
-  document.getElementById('page-eyebrow').textContent = `${STATS.total} perfiles · Medellín 2026`;
+  document.getElementById('page-eyebrow').textContent = `Perfiles · Medellín 2026`;
   document.getElementById('page-sub').textContent =
-    `${STATS.total} líderes, ${STATS.territorios} territorios, ${STATS.causas} causas principales. Usa los filtros para encontrar exactamente lo que necesitas.`;
+    'Un Directorio para reconocer, conectar y activar una red que multiplica bienestar en Medellín.';
 
   // ── INIT FILTERS ──
-  const territorios = [...new Set(LIDERES.map(l => l.territorio))].sort((a,b) => a.localeCompare(b, 'es'));
-  const selT = document.getElementById('filter-territorio');
-  territorios.forEach(t => {
-    const o = document.createElement('option');
-    o.value = t;
-    o.textContent = t.length > 38 ? t.slice(0, 35).trim() + '…' : t;
-    if (t.length > 38) o.title = t;
-    selT.appendChild(o);
-  });
+  const COMUNAS_ORDEN = [
+    'Comuna 1 (Popular)', 'Comuna 2 (Santa Cruz)', 'Comuna 3 (Manrique)',
+    'Comuna 4 (Aranjuez)', 'Comuna 5 (Castilla)', 'Comuna 6 (Doce de Octubre)',
+    'Comuna 7 (Robledo)', 'Comuna 8 (Villa Hermosa)', 'Comuna 9 (Buenos Aires)',
+    'Comuna 10 (La Candelaria)', 'Comuna 11 (Laureles-Estadio)', 'Comuna 12 (La América)',
+    'Comuna 13 (San Javier)', 'Comuna 14 (El Poblado)', 'Comuna 15 (Guayabal)',
+    'Comuna 16 (Belén)'
+  ];
+  const CORREGIMIENTOS_ORDEN = [
+    'San Sebastián de Palmitas', 'San Cristóbal', 'Altavista',
+    'San Antonio de Prado', 'Santa Elena'
+  ];
+  const MUNICIPIOS_ORDEN = [
+    'Barbosa', 'Girardota', 'Copacabana', 'Bello', 'Medellín',
+    'Envigado', 'Itagüí', 'Sabaneta', 'La Estrella', 'Caldas'
+  ];
+
+  const zonasPresentes = new Set();
+  LIDERES.forEach(l => (l.zonas || []).forEach(z => zonasPresentes.add(z)));
+  const otrasZonas = [...zonasPresentes]
+    .filter(z => !COMUNAS_ORDEN.includes(z) && !CORREGIMIENTOS_ORDEN.includes(z) && !MUNICIPIOS_ORDEN.includes(z))
+    .sort((a, b) => a.localeCompare(b, 'es'));
+
+  function buildOptgroup(label, values) {
+    const present = values.filter(v => zonasPresentes.has(v));
+    if (!present.length) return '';
+    return `<optgroup label="${label}">` + present.map(v => `<option value="${v}">${v}</option>`).join('') + `</optgroup>`;
+  }
+
+  const selT = document.getElementById('filter-zona');
+  selT.insertAdjacentHTML('beforeend',
+    buildOptgroup('Comunas de Medellín', COMUNAS_ORDEN) +
+    buildOptgroup('Corregimientos de Medellín', CORREGIMIENTOS_ORDEN) +
+    buildOptgroup('Municipios del Área Metropolitana', MUNICIPIOS_ORDEN) +
+    buildOptgroup('Otros municipios', otrasZonas)
+  );
 
   const selB = document.getElementById('filter-busca');
   BUSCA_OPCIONES.forEach(b => { const o = document.createElement('option'); o.value = b; o.textContent = b; selB.appendChild(o); });
@@ -346,7 +373,7 @@
     return {
       search: document.getElementById('search-input').value.toLowerCase().trim(),
       causa: document.querySelector('.cause-pill.active')?.dataset.causa || '',
-      territorio: document.getElementById('filter-territorio').value,
+      zona: document.getElementById('filter-zona').value,
       busca: document.getElementById('filter-busca').value,
       ofrece: document.getElementById('filter-ofrece').value,
       alianza: document.getElementById('filter-alianza').value
@@ -359,7 +386,7 @@
       if (!hay.includes(f.search)) return false;
     }
     if (f.causa && !l.causas.includes(f.causa)) return false;
-    if (f.territorio && l.territorio !== f.territorio) return false;
+    if (f.zona && !(l.zonas || []).includes(f.zona)) return false;
     if (f.busca && !l.busca.includes(f.busca)) return false;
     if (f.ofrece && !l.ofrece.includes(f.ofrece)) return false;
     if (f.alianza === 'si' && !l.disponible_alianzas) return false;
@@ -373,10 +400,10 @@
     const empty = document.getElementById('empty-state');
     const count = document.getElementById('filters-count');
 
-    const hasFilter = f.search || f.causa || f.territorio || f.busca || f.ofrece || f.alianza;
+    const hasFilter = f.search || f.causa || f.zona || f.busca || f.ofrece || f.alianza;
     document.getElementById('filter-reset').classList.toggle('visible', !!hasFilter);
 
-    ['filter-territorio','filter-busca','filter-ofrece','filter-alianza'].forEach(id => {
+    ['filter-zona','filter-busca','filter-ofrece','filter-alianza'].forEach(id => {
       document.getElementById(id).classList.toggle('has-value', !!document.getElementById(id).value);
     });
 
@@ -410,7 +437,7 @@
 
   function resetFilters() {
     document.getElementById('search-input').value = '';
-    document.getElementById('filter-territorio').value = '';
+    document.getElementById('filter-zona').value = '';
     document.getElementById('filter-busca').value = '';
     document.getElementById('filter-ofrece').value = '';
     document.getElementById('filter-alianza').value = '';
@@ -421,7 +448,7 @@
 
   // ── EVENTS ──
   document.getElementById('search-input').addEventListener('input', renderGrid);
-  document.getElementById('filter-territorio').addEventListener('change', renderGrid);
+  document.getElementById('filter-zona').addEventListener('change', renderGrid);
   document.getElementById('filter-busca').addEventListener('change', renderGrid);
   document.getElementById('filter-ofrece').addEventListener('change', renderGrid);
   document.getElementById('filter-alianza').addEventListener('change', renderGrid);

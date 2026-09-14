@@ -422,15 +422,13 @@
 <script src="common.js"></script>
 <script>
   document.getElementById('hero-lead').textContent =
-    `${STATS.total} líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.`;
+    `Líderes, causas, capacidades y oportunidades de articulación para el bienestar comunitario.`;
   document.getElementById('qf-causa-desc').textContent =
-    `${TODAS_CAUSAS.slice(0,4).join(', ')} y ${Math.max(TODAS_CAUSAS.length - 4, 0)} causas más.`;
+    `${TODAS_CAUSAS.slice(0,4).join(', ')} y otras causas más.`;
 
   // ── STATS STRIP ──
   const statsData = [
-    [STATS.total, 'Líderes registrados'],
     [STATS.territorios, 'Territorios representados'],
-    [STATS.causas, 'Causas transformadoras'],
     [STATS.disponibles, 'Disponibles para alianzas'],
   ];
   document.getElementById('stats-inner').innerHTML = statsData.map(([num, label]) => `
