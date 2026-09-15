@@ -111,7 +111,6 @@
     }
     .filter-reset:hover { background: #2a2018; }
     .filter-reset.visible { display: block; }
-    .filters-count { flex: 0 0 auto; font-size: 13px; color: var(--mute); font-weight: 600; margin-left: auto; white-space: nowrap; }
 
     /* CAUSE PILLS (horizontal scroll) */
     .cause-pills-wrap {
@@ -255,18 +254,17 @@
     <select class="filter-select" id="filter-zona">
       <option value="">Comuna / Municipio</option>
     </select>
-    <select class="filter-select" id="filter-busca">
-      <option value="">¿Qué buscan?</option>
-    </select>
     <select class="filter-select" id="filter-ofrece">
       <option value="">¿Qué ofrecen?</option>
+    </select>
+    <select class="filter-select" id="filter-busca">
+      <option value="">¿Qué buscan?</option>
     </select>
     <select class="filter-select" id="filter-alianza" style="display:none">
       <option value="">Disponibilidad</option>
       <option value="si">Disponibles para alianzas</option>
     </select>
     <button class="filter-reset" id="filter-reset">✕ Limpiar filtros</button>
-    <span class="filters-count" id="filters-count"></span>
   </div>
 </div>
 
@@ -398,7 +396,6 @@
     const filtered = LIDERES.filter(l => applyFilters(f, l));
     const grid = document.getElementById('leaders-grid');
     const empty = document.getElementById('empty-state');
-    const count = document.getElementById('filters-count');
 
     const hasFilter = f.search || f.causa || f.zona || f.busca || f.ofrece || f.alianza;
     document.getElementById('filter-reset').classList.toggle('visible', !!hasFilter);
@@ -406,8 +403,6 @@
     ['filter-zona','filter-busca','filter-ofrece','filter-alianza'].forEach(id => {
       document.getElementById(id).classList.toggle('has-value', !!document.getElementById(id).value);
     });
-
-    count.textContent = `${filtered.length} líder${filtered.length !== 1 ? 'es' : ''}`;
 
     if (filtered.length === 0) {
       grid.innerHTML = ''; empty.style.display = 'block'; return;

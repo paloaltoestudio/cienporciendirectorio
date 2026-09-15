@@ -95,7 +95,7 @@ const OFRECE_OPCIONES = ["Formación", "Consultoría", "Facilitación", "Articul
 
 const CAPACIDADES_DATA = {
   labels: ["Formación", "Gestión De Proyectos", "Comunicación", "Organización Comunitaria", "Arte", "Cultura", "Incidencia", "Investigación", "Mediación De Conflictos", "Tecnología"],
-  values: [48, 37, 28, 16, 16, 16, 16, 13, 12, 6]
+  values: [49, 37, 29, 16, 16, 16, 16, 13, 13, 6]
 };
 
 const LIDERES = [
@@ -2754,7 +2754,7 @@ const LIDERES = [
     "numero": "49",
     "nombre": "Wayra Azul Acurio",
     "organizacion": "El llamado",
-    "territorio": "Sna Sebastián de palmitas",
+    "territorio": "San Sebastián de Palmitas",
     "municipio": "Medellín",
     "zonas": ["San Sebastián de Palmitas"],
     "fotos": [
@@ -2785,12 +2785,12 @@ const LIDERES = [
     "experiencia": 5,
     "disponible_alianzas": true,
     "que_hace": "Hago retiros y experiencias para conectar con el ser. A través del liderazgo en la comunidad quiero implementar la vinculación con el territorio y su naturaleza.",
-    "problema": "Parar. Detenerse ante la inmediata de vivir un día a día sin sentido. Conectarse con un espacio donde pueden elegir diferente, experimentar paz y tranquilidad.",
+    "problema": "Ayuda a quienes sienten que han perdido la conexión consigo mismos, con los demás y con la naturaleza. El Llamado propone una pausa consciente para salir del piloto automático, recuperar la escucha interior y descubrir otras maneras de vivir, relacionarse y habitar el territorio.",
     "con_quien": "Por ahora mi acompañamiento ha sido para mujeres, en adelante será para el corregimiento.",
     "que_ofrece_largo": "Me gustaría crear un grupo de seres enfocados en esta línea para expandir estos encuentros y llegar a más personas en Medellín pueden contar con la facilitación en diferentes técnicas y vivir las experiencias de cerca.",
     "frase_vision": "Somos el puente para que otros puedan cruzar",
     "alianzas_activas": "Todavia estoy sola",
-    "proyecto_autogestion": "Si, me gustaría iniciar con actividades de arte que vinculen a la ciudadania, connmurales de accion poetica que lindo que cien x cien se anime a dejar huella en los muros de Medellín.",
+    "proyecto_autogestion": "Crear una red territorial de experiencias de conciencia, arte y conexión con la naturaleza, llevando prácticas de meditación y bienestar a distintos municipios y formando encuentros trimestrales entre terapeutas, líderes y gestores para intercambiar saberes y fortalecer iniciativas locales. A través del arte, los saberes ancestrales de la tierra y las experiencias de El Llamado, quiero crear espacios de encuentro que acerquen la experiencia de los retiros a la vida cotidiana y permitan que cada territorio encuentre sus propias formas de cultivar bienestar, conexión y comunidad.",
     "contacto": {
       "email": "Wayrawellnes@gmail.com",
       "telefono": "+573044331784",
@@ -3551,7 +3551,7 @@ const LIDERES = [
     "organizacion": "LaSavia · Laboratorio Botánico",
     "territorio": "Medellín y municipios de Antioquia , otras ciudades",
     "municipio": "Medellín",
-    "zonas": ["Medellín"],
+    "zonas": ["Medellín", "Rionegro"],
     "fotos": [
       "clara-robledo-moreno-63-0-primary.webp",
       "clara-robledo-moreno-63-1.webp",
@@ -3962,12 +3962,67 @@ const LIDERES = [
       "instagram": null
     },
     "foto": "images/lideres/denis-eugenia-sepulveda-aguirre-70-0-primary.webp"
+  },
+  {
+    "id": "sergio-chacon-barrera",
+    "numero": "72",
+    "nombre": "Sergio Chacón Barrera",
+    "organizacion": "Independiente",
+    "territorio": "Comuna 10 - La Candelaria",
+    "municipio": "Medellín",
+    "zonas": ["Comuna 10 (La Candelaria)"],
+    "fotos": [
+      "sergio-chacon-barrera-72-0-primary.webp",
+      "sergio-chacon-barrera-72-1.webp",
+      "sergio-chacon-barrera-72-2.webp"
+    ],
+    "causas": [
+      "Educación",
+      "Paz",
+      "Derechos Humanos"
+    ],
+    "poblacion": [
+      "Juventud",
+      "Comunidad Lgbtiq+",
+      "Población Migrante"
+    ],
+    "capacidades": [
+      "Formación",
+      "Comunicación",
+      "Mediación De Conflictos"
+    ],
+    "busca": [
+      "Mentoría",
+      "Alianzas Estratégicas",
+      "Visibilidad"
+    ],
+    "ofrece": [
+      "Formación",
+      "Consultoría",
+      "Articulación Territorial"
+    ],
+    "experiencia": 15,
+    "disponible_alianzas": true,
+    "que_hace": "Impulso procesos sociales, educativos y jurídicos para la defensa de los derechos humanos, la participación ciudadana y la inclusión de poblaciones históricamente discriminadas.",
+    "problema": "Contribuyo a reducir barreras de acceso a derechos, participación y oportunidades, fortaleciendo capacidades comunitarias y promoviendo respuestas institucionales más inclusivas.",
+    "con_quien": "Trabajo principalmente con juventudes, personas LGBTIQ+, organizaciones sociales y comunidades en Medellín y Antioquia, articulando actores comunitarios, académicos e institucionales.",
+    "que_ofrece_largo": "Ofrezco experiencia jurídica, investigación social, formación, diseño y gestión de proyectos, incidencia pública y articulación de redes para transformar problemas sociales en acciones concretas.",
+    "frase_vision": "Una sociedad donde la diversidad, la educación y la participación sean herramientas reales para que todas las personas puedan ejercer plenamente sus derechos.",
+    "alianzas_activas": "Universidad de Antioquia (UdeA), Fundación Mi Sangre, Voluntariado Diverso, Fundación Plan País.",
+    "proyecto_autogestion": "Sí. Impulsaría POSIBILIA, una iniciativa de consultoría y fortalecimiento de organizaciones que combina liderazgo, colaboración y proyección estratégica para convertir capacidades sociales en proyectos sostenibles y de impacto. Con integrantes de CienPorCien con experiencia en innovación, gestión, comunicaciones, emprendimiento y desarrollo organizacional. La combinación permitiría convertir conocimiento diverso en soluciones concretas para organizaciones y territorios.",
+    "contacto": {
+      "email": "chechojuventud@gmail.com",
+      "telefono": "+573212940934",
+      "web": null,
+      "instagram": "@checho_juventud"
+    },
+    "foto": "images/lideres/sergio-chacon-barrera-72-0-primary.webp"
   }
 ];
 
 const STATS = {
-  total: 71,
+  total: 72,
   territorios: 54,
   causas: 10,
-  disponibles: 70
+  disponibles: 71
 };

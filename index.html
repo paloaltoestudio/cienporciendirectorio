@@ -142,29 +142,6 @@
     .hero-network-node circle.ring { transition: stroke-width .15s; }
     .hero-network-node:hover circle.ring { stroke-width: 4.5; }
 
-    /* ── STATS STRIP ── */
-    .stats {
-      background: var(--ink);
-      padding: 36px 32px;
-    }
-    .stats-inner {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0; border-left: 1px solid rgba(255,255,255,.1);
-    }
-    .stat {
-      padding: 8px 32px;
-      border-right: 1px solid rgba(255,255,255,.1);
-    }
-    .stat-num {
-      font-family: 'Parkinsans', sans-serif;
-      font-size: 48px; font-weight: 800; letter-spacing: -0.04em;
-      background: linear-gradient(90deg, var(--orange) 0%, var(--peach) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; display: block;
-    }
-    .stat-label { font-size: 13px; color: rgba(255,255,255,.55); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
-
     /* ── SECTION HEADER ── */
     .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; gap: 32px; }
     .section-header h2 { font-size: clamp(32px, 3.5vw, 48px); color: var(--ink); }
@@ -179,7 +156,7 @@
     .quickfind-inner { max-width: 1280px; margin: 0 auto; }
     .quickfind-title { font-size: clamp(28px, 3vw, 42px); margin-bottom: 12px; }
     .quickfind-sub { font-size: 16px; color: var(--mute); margin-bottom: 48px; max-width: 540px; }
-    .qf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .qf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .qf-card {
       background: var(--cream); border-radius: var(--r-md);
       padding: 28px 24px; cursor: pointer; display: block;
@@ -233,7 +210,6 @@
       .hero { min-height: auto; }
       .hero-inner { grid-template-columns: 1fr; padding: 48px 24px 64px; }
       .hero-deco { display: none; }
-      .stats-inner { grid-template-columns: repeat(2,1fr); }
       .qf-grid { grid-template-columns: repeat(2,1fr); }
       .about-inner { grid-template-columns: 1fr; }
       .howto-grid { grid-template-columns: 1fr; }
@@ -297,22 +273,12 @@
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-inner" id="stats-inner"></div>
-</div>
-
 <!-- QUICK FIND -->
 <section class="quickfind">
   <div class="quickfind-inner">
     <h2 class="quickfind-title">Encuentra el líder<br>que necesitas</h2>
-    <p class="quickfind-sub">Navega el directorio por cualquiera de estos cuatro ejes de búsqueda.</p>
+    <p class="quickfind-sub">Navega el directorio por cualquiera de estos ejes de búsqueda.</p>
     <div class="qf-grid">
-      <a href="directorio.html?filtro=causa" class="qf-card">
-        <span class="qf-icon">🎯</span>
-        <div class="qf-label">Por causa</div>
-        <div class="qf-desc" id="qf-causa-desc">Salud mental, educación, ambiente, paz y más causas transformadoras.</div>
-      </a>
       <a href="directorio.html?filtro=territorio" class="qf-card">
         <span class="qf-icon">📍</span>
         <div class="qf-label">Por territorio</div>
@@ -411,20 +377,6 @@
 <script src="data.js"></script>
 <script src="common.js"></script>
 <script>
-  document.getElementById('qf-causa-desc').textContent =
-    `${TODAS_CAUSAS.slice(0,4).join(', ')} y otras causas más.`;
-
-  // ── STATS STRIP ──
-  const statsData = [
-    [STATS.territorios, 'Territorios representados'],
-    [STATS.disponibles, 'Disponibles para alianzas'],
-  ];
-  document.getElementById('stats-inner').innerHTML = statsData.map(([num, label]) => `
-    <div class="stat">
-      <span class="stat-num">${num}</span>
-      <span class="stat-label">${label}</span>
-    </div>`).join('');
-
   // ── HERO NETWORK: leader photos connected by shared causas ──
   (function initHeroNetwork() {
     const svgEl = document.getElementById('hero-network-svg');
